@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-28 11:29+0100\n"
+"POT-Creation-Date: 2018-10-28 21:32+0100\n"
 "PO-Revision-Date: 2018-10-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -47,6 +47,27 @@ msgstr "Cuando se usa en el script, borra todos los directorios vacios rescursiv
 
 msgid "To avoid errors and wrong changes, path must be an absolute one."
 msgstr "Para evitar errores y cambios erróneos, la ruta pasada debe ser absoluta"
+
+msgid "EXAMPLES"
+msgstr "EJEMPLOS"
+
+msgid "Basic Example"
+msgstr "Ejemplo básico"
+
+msgid "recpermissions /home/user/"
+msgstr "recpermissions /home/user"
+
+msgid "This command will change user and group to current user and to current user main group. Files will have rw-r--r-- permisions and directories rwxr-xr-x permisions. If the script finds empty dirs it will NOT remove them:"
+msgstr ""
+
+msgid "Full Example"
+msgstr "Ejemplo completo"
+
+msgid "recpermissions --user root --group root --files 640 --directories 750 --remove_emptydirs /home/user/"
+msgstr "recpermissions --user root --group root --files 640 --directories 750 --remove_emptydirs /home/user/"
+
+msgid "This command will change user and group to root user and group. Files will have rw-r----- permisions and directories rwxr-x--- permisions. If the script finds empty dirs it will remove them:"
+msgstr ""
 
 msgid "Search date and time patterns to delete innecesary files or directories"
 msgstr "Busca patrónes de fecha y hora para borrar ficheros o directorios innecesarios"

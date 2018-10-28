@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-28 19:34+0100\n"
+"POT-Creation-Date: 2018-10-28 21:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,6 +45,27 @@ msgid "When used in script, removes all empty dirs recursively from path."
 msgstr ""
 
 msgid "To avoid errors and wrong changes, path must be an absolute one."
+msgstr ""
+
+msgid "EXAMPLES"
+msgstr ""
+
+msgid "Basic Example"
+msgstr ""
+
+msgid "recpermissions /home/user/"
+msgstr ""
+
+msgid "This command will change user and group to current user and to current user main group. Files will have rw-r--r-- permisions and directories rwxr-xr-x permisions. If the script finds empty dirs it will NOT remove them:"
+msgstr ""
+
+msgid "Full Example"
+msgstr ""
+
+msgid "recpermissions --user root --group root --files 640 --directories 750 --remove_emptydirs /home/user/"
+msgstr ""
+
+msgid "This command will change user and group to root user and group. Files will have rw-r----- permisions and directories rwxr-x--- permisions. If the script finds empty dirs it will remove them:"
 msgstr ""
 
 msgid "Search date and time patterns to delete innecesary files or directories"

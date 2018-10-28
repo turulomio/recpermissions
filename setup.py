@@ -82,7 +82,7 @@ class Doc(Command):
         man.setMetadata("RecPermissions",  1,   datetime.date.today(), "Mariano Muñoz", _("Change files and directories owner and permissions recursively."))
         man.setSynopsis("""usage: recpermissions [-h] [--version] [--user USER] [--group GROUP]
                       [--files FILES] [--directories DIRECTORIES]
-                      [--remove_empty_directories] path""")
+                      [--remove_empty_directories] absolute_path""")
         man.header(_("DESCRIPTION"), 1)
         man.paragraph(_("This app has the following mandatory parameters:"), 1)
         man.paragraph("--user", 2, True)
@@ -97,6 +97,13 @@ class Doc(Command):
         man.paragraph(_("When used in script, removes all empty dirs recursively from path."), 3)  
         man.paragraph("absolute_path", 2, True)
         man.paragraph(_("To avoid errors and wrong changes, path must be an absolute one."), 3)  
+        man.header(_("EXAMPLES"), 1)
+        man.paragraph(_("Basic Example"), 2, True)
+        man.paragraph(_("recpermissions /home/user/"), 3)
+        man.paragraph(_("This command will change user and group to current user and to current user main group. Files will have rw-r--r-- permisions and directories rwxr-xr-x permisions. If the script finds empty dirs it will NOT remove them:"), 3)
+        man.paragraph(_("Full Example"), 2, True)
+        man.paragraph(_("recpermissions --user root --group root --files 640 --directories 750 --remove_emptydirs /home/user/"), 3)
+        man.paragraph(_("This command will change user and group to root user and group. Files will have rw-r----- permisions and directories rwxr-x--- permisions. If the script finds empty dirs it will remove them:"), 3)
         man.save()
 
     ########################################################################

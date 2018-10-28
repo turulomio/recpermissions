@@ -7,7 +7,7 @@ Cambia el propietario y los permisos de ficheros y directorios recursivamente.
 
 RecPermissions usage: recpermissions [\-h] [\-\-version] [\-\-user USER] [\-\-group GROUP]
                       [\-\-files FILES] [\-\-directories DIRECTORIES]
-                      [\-\-remove_empty_directories] path
+                      [\-\-remove_empty_directories] absolute_path
 .SH DESCRIPCI\('ON
 
 .PP
@@ -70,5 +70,39 @@ Cuando se usa en el script, borra todos los directorios vacios rescursivamente d
 .RS
 .RS
 Para evitar errores y cambios err\('oneos, la ruta pasada debe ser absoluta
+.RE
+.RE
+.SH EJEMPLOS
+
+.PP
+.RS
+.B Ejemplo b\('asico
+.RE
+.PP
+.RS
+.RS
+recpermissions /home/user
+.RE
+.RE
+.PP
+.RS
+.RS
+This command will change user and group to current user and to current user main group. Files will have rw\-r\-\-r\-\- permisions and directories rwxr\-xr\-x permisions. If the script finds empty dirs it will NOT remove them:
+.RE
+.RE
+.PP
+.RS
+.B Ejemplo completo
+.RE
+.PP
+.RS
+.RS
+recpermissions \-\-user root \-\-group root \-\-files 640 \-\-directories 750 \-\-remove_emptydirs /home/user/
+.RE
+.RE
+.PP
+.RS
+.RS
+This command will change user and group to root user and group. Files will have rw\-r\-\-\-\-\- permisions and directories rwxr\-x\-\-\- permisions. If the script finds empty dirs it will remove them:
 .RE
 .RE
