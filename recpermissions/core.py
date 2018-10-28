@@ -52,7 +52,7 @@ def main(arguments=None):
     decimal_value_files=int(args.files,8)
     decimal_value_dirs=int(args.directories,8)
 
-    for (dirpath, dirnames, filenames) in os.walk(os.getcwd()):
+    for (dirpath, dirnames, filenames) in os.walk(args.absolute_path):
         for d in dirnames:
             dirname= os.path.join(dirpath, d)
             shutil.chown(dirname, args.user, args.group)
