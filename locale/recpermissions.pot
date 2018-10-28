@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-28 11:12+0100\n"
+"POT-Creation-Date: 2018-10-28 11:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,6 +44,9 @@ msgstr ""
 msgid "When used in script, removes all empty dirs recursively from path."
 msgstr ""
 
+msgid "To avoid errors and wrong changes, path must be an absolute one."
+msgstr ""
+
 msgid "Search date and time patterns to delete innecesary files or directories"
 msgstr ""
 
@@ -67,6 +70,12 @@ msgid "Directory permissions to set in all directories. The default value is '%(
 msgstr ""
 
 msgid "If it's established, removes empty directories recursivily from current path."
+msgstr ""
+
+msgid "Directory who is going to be changed permissions and owner recursivily"
+msgstr ""
+
+msgid "Path parameter must be an absolute one"
 msgstr ""
 
 msgid "{} empty dirs were removed"

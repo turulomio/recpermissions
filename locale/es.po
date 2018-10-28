@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-28 11:12+0100\n"
+"POT-Creation-Date: 2018-10-28 11:29+0100\n"
 "PO-Revision-Date: 2018-10-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -34,15 +34,18 @@ msgid "User used to change files owner."
 msgstr "Usuario usado para cambiar el propietario de los ficheros"
 
 msgid "Group used to change files owner group."
-msgstr ""
+msgstr "Grupo usado para cambiar el grupo del propietario del fichero"
 
 msgid "File permissions in octal to be used. 644 by default."
-msgstr ""
+msgstr "Permisos de ficheros a usar en ocatal. 644 por defecto."
 
 msgid "Directory permissions in octal to be used. 755 by default."
 msgstr ""
 
 msgid "When used in script, removes all empty dirs recursively from path."
+msgstr ""
+
+msgid "To avoid errors and wrong changes, path must be an absolute one."
 msgstr ""
 
 msgid "Search date and time patterns to delete innecesary files or directories"
@@ -69,6 +72,12 @@ msgstr "Permisor para poner en todos los directorios. El valor por defecto es '%
 
 msgid "If it's established, removes empty directories recursivily from current path."
 msgstr "Si se establece, borra todos los directorios vacios recursivamente desde la ruta actual."
+
+msgid "Directory who is going to be changed permissions and owner recursivily"
+msgstr ""
+
+msgid "Path parameter must be an absolute one"
+msgstr ""
 
 msgid "{} empty dirs were removed"
 msgstr "{} directorios vacios fueron borrados"

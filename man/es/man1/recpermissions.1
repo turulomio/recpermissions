@@ -7,7 +7,7 @@ Cambia el propietario y los permisos de ficheros y directorios recursivamente.
 
 RecPermissions usage: recpermissions [\-h] [\-\-version] [\-\-user USER] [\-\-group GROUP]
                       [\-\-files FILES] [\-\-directories DIRECTORIES]
-                      [\-\-remove_empty_directories]
+                      [\-\-remove_empty_directories] path
 .SH DESCRIPCI\('ON
 
 .PP
@@ -29,7 +29,7 @@ Usuario usado para cambiar el propietario de los ficheros
 .PP
 .RS
 .RS
-Group used to change files owner group.
+Grupo usado para cambiar el grupo del propietario del fichero
 .RE
 .RE
 .PP
@@ -39,7 +39,7 @@ Group used to change files owner group.
 .PP
 .RS
 .RS
-File permissions in octal to be used. 644 by default.
+Permisos de ficheros a usar en ocatal. 644 por defecto.
 .RE
 .RE
 .PP
@@ -60,5 +60,15 @@ Directory permissions in octal to be used. 755 by default.
 .RS
 .RS
 When used in script, removes all empty dirs recursively from path.
+.RE
+.RE
+.PP
+.RS
+.B absolute_path
+.RE
+.PP
+.RS
+.RS
+To avoid errors and wrong changes, path must be an absolute one.
 .RE
 .RE

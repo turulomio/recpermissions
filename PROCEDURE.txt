@@ -7,6 +7,7 @@ Nueva release
  ) python3 setup.py doc
  ) python3 setup.py install
  ) python3 setup.py doxygen
+ ) Hacer un commit en el git y un push
 4) Hacer un nuevo tag en github
 5) python setup.py sdist upload -r pypi        Para subirlo a python
 6) Crear un nuevo ebuild con la nueva versión

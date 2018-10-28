@@ -30,6 +30,9 @@ Dependencies
 
 Changelog
 =========
+0.2.0
+  * Added absolute path parameter to avoid errors and wrong changes
+
 0.1.1
   * Solved bug in current path directory
 

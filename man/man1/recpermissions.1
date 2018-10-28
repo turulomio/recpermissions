@@ -7,7 +7,7 @@ Change files and directories owner and permissions recursively.
 
 RecPermissions usage: recpermissions [\-h] [\-\-version] [\-\-user USER] [\-\-group GROUP]
                       [\-\-files FILES] [\-\-directories DIRECTORIES]
-                      [\-\-remove_empty_directories]
+                      [\-\-remove_empty_directories] path
 .SH DESCRIPTION
 
 .PP
@@ -60,5 +60,15 @@ Directory permissions in octal to be used. 755 by default.
 .RS
 .RS
 When used in script, removes all empty dirs recursively from path.
+.RE
+.RE
+.PP
+.RS
+.B absolute_path
+.RE
+.PP
+.RS
+.RS
+To avoid errors and wrong changes, path must be an absolute one.
 .RE
 .RE
