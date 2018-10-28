@@ -87,6 +87,14 @@ class Doc(Command):
         man.paragraph(_("This app has the following mandatory parameters:"), 1)
         man.paragraph("--user", 2, True)
         man.paragraph(_("User used to change files owner."), 3)
+        man.paragraph("--group", 2, True)
+        man.paragraph(_("Group used to change files owner group."), 3)
+        man.paragraph("--files", 2, True)
+        man.paragraph(_("File permissions in octal to be used. 644 by default."), 3)
+        man.paragraph("--directories", 2, True)
+        man.paragraph(_("Directory permissions in octal to be used. 755 by default."), 3)
+        man.paragraph("--remove_emptydirs", 2, True)
+        man.paragraph(_("When used in script, removes all empty dirs recursively from path."), 3)  
         man.save()
 
     ########################################################################
