@@ -1,4 +1,30 @@
-Script to change permissions and owner recursivily from current directory
+What is RecPermissions
+======================
+It's a script to change permissions and owner recursivily from current directory. It can delete empty directories when necessary.
+
+Usage
+=====
+
+Basic Example
+-------------
+
+This command will change user and group to current user and to current user main group. Files will have rw-r--r-- permisions and directories rwxr-xr-x permisions. If the script finds empty dirs it will NOT remove them:
+
+`recpermissions --path /home/user/`
+
+Full Example
+------------
+
+This command will change user and group to root user and group. Files will have rw-r----- permisions and directories rwxr-x--- permisions. If the script finds empty dirs it will remove them:
+
+`recpermissions --user root --group root --files 640 --directories 750 --remove_emptydirs --path /home/user/`
+
+License
+=======
+GPL-3
+
+Links
+=====
 
 Source code & Development:
     https://github.com/Turulomio/recpermissions
@@ -15,13 +41,6 @@ Pypi web page:
 Gentoo ebuild
     You can find a Gentoo ebuild in https://sourceforge.net/p/xulpymoney/code/HEAD/tree/myportage/app-admin/recpermissions/
 
-Usage
-=====
-You can find use examples in https://github.com/Turulomio/recpermissions/wiki
-
-License
-=======
-GPL-3
 
 Dependencies
 ============
