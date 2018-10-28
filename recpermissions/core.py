@@ -42,18 +42,12 @@ def main(arguments=None):
 
     colorama_init(autoreset=True)
 
-    changedOwners=0
-    changedPermissions=0
     deletedDirs=0
 
     decimal_value_files=int(args.files,8)
     decimal_value_dirs=int(args.directories,8)
-    print(decimal_value_files, args.files)
 
-    uid = pwd.getpwnam(args.user).pw_uid
-    gid = grp.getgrnam(args.group).gr_gid
-
-    for (dirpath, dirnames, filenames) in os.walk(os.getcwd()+"/recpermissions"):
+    for (dirpath, dirnames, filenames) in os.walk(os.getcwd()):
         for d in dirnames:
             dirname= os.path.join(dirpath, d)
             shutil.chown(dirname, args.user, args.group)
@@ -67,4 +61,4 @@ def main(arguments=None):
             os.chmod(filename, decimal_value_files)
 
     if deletedDirs>0:
-        print(_("{} empty dirs were removed").format(deletedDirs))
+        print(_("{} empty dirs were removed").format(Fore.RED + Style.BRIGHT + str(deletedDirs)+ Style.RESET_ALL))

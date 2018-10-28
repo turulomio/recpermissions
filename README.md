@@ -1,12 +1,16 @@
-# recpermissions
+RecPermissions
+==============
 Script to change permissions and owner recursivily from current directory
 
 Source code & Development:
     https://github.com/Turulomio/recpermissions
+
 Doxygen documentation:
     http://turulomio.users.sourceforge.net/doxygen/recpermissions/
+
 Main developer web page:
     http://turulomio.users.sourceforge.net/en/proyectos.html
+
 Gentoo ebuild
     You can find a Gentoo ebuild in https://sourceforge.net/p/xulpymoney/code/HEAD/tree/myportage/app-admin/recpermissions/
 
@@ -21,5 +25,7 @@ Dependencies
 
 Changelog
 =========
+0.1.1
+  * Solved bug in current path directory
 0.1.0
   * Creating infrastructure

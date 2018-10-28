@@ -79,7 +79,7 @@ class Doc(Command):
             man=Man("man/es/man1/recpermissions")
         print("  - DESCRIPTION in {} is {}".format(language, _("DESCRIPTION")))
 
-        man.setMetadata("RecPermissions",  1,   datetime.date.today(), "Mariano Muñoz", _("Change files and directories owner and permissions recursivily."))
+        man.setMetadata("RecPermissions",  1,   datetime.date.today(), "Mariano Muñoz", _("Change files and directories owner and permissions recursively."))
         man.setSynopsis("""usage: recpermissions [-h] [--version] [--user USER] [--group GROUP]
                       [--files FILES] [--directories DIRECTORIES]
                       [--remove_empty_directories]""")
