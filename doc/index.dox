@@ -1,0 +1,42 @@
+/*! \mainpage TooManyFiles
+
+Introduction
+============
+
+TooManyFiles is an admin script. Used to delete innecesary files finding date and time patterns in filename
+
+The main web page is located in <a href="https://too-many-files.sourceforge.io/">https://too-many-files.sourceforge.io/</a>
+
+The Pypi web page is located in <a href="https://pypi.org/project/toomanyfiles/">https://pypi.org/project/toomanyfiles/</a>
+
+Development
+===========
+- Turulomio (Idea y development)
+
+Sourceforge
+===========
+This project is hosted in SourceForge, so you can use the next services:
+
+- <a href="https://sourceforge.net/p/too-many-files/tickets/" target="_blank">Tickets</a>
+
+Software used to develop TooManyFiles
+=====================================
+
+<a target="_blank" href="https://eric-ide.python-projects.org/index.html">Eric</a> is used as the main IDE
+
+TooManyFiles depends on the following software:
+- <a target="_blank" href="https://www.python.org/">Python3</a>, as the main programming language.
+- <a target="_blank" href="https://pypi.org/project/colorama/">Colorama</a>, to give color to console output.
+
+
+\page Howto Howto
+
+TooManyFiles Use
+================
+
+This is an animated gif HOWTO:
+
+@image html toomanyfiles_howto_en.gif "TooManyFiles howto" width=70%
+
+
+*/
