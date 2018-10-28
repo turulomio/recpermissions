@@ -8,9 +8,16 @@ Doxygen documentation:
 
 Main developer web page:
     http://turulomio.users.sourceforge.net/en/proyectos.html
+    
+Pypi web page:
+    https://pypi.org/project/recpermissions/
 
 Gentoo ebuild
     You can find a Gentoo ebuild in https://sourceforge.net/p/xulpymoney/code/HEAD/tree/myportage/app-admin/recpermissions/
+
+Usage
+=====
+You can find use examples in https://github.com/Turulomio/recpermissions/wiki
 
 License
 =======
