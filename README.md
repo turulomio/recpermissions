@@ -10,14 +10,14 @@ Basic Example
 
 This command will change user and group to current user and to current user main group. Files will have rw-r--r-- permisions and directories rwxr-xr-x permisions. If the script finds empty dirs it will NOT remove them:
 
-`recpermissions --path /home/user/`
+`recpermissions /home/user/`
 
 Full Example
 ------------
 
 This command will change user and group to root user and group. Files will have rw-r----- permisions and directories rwxr-x--- permisions. If the script finds empty dirs it will remove them:
 
-`recpermissions --user root --group root --files 640 --directories 750 --remove_emptydirs --path /home/user/`
+`recpermissions --user root --group root --files 640 --directories 750 --remove_emptydirs /home/user/`
 
 License
 =======
