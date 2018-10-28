@@ -37,16 +37,16 @@ msgid "Group used to change files owner group."
 msgstr "Grupo usado para cambiar el grupo del propietario del fichero"
 
 msgid "File permissions in octal to be used. 644 by default."
-msgstr "Permisos de ficheros a usar en ocatal. 644 por defecto."
+msgstr "Permisos de ficheros a usar en octal. 644 por defecto."
 
 msgid "Directory permissions in octal to be used. 755 by default."
-msgstr ""
+msgstr "Permisos de directorio a usar en octal. 755 por defecto."
 
 msgid "When used in script, removes all empty dirs recursively from path."
-msgstr ""
+msgstr "Cuando se usa en el script, borra todos los directorios vacios rescursivamente desde la ruta"
 
 msgid "To avoid errors and wrong changes, path must be an absolute one."
-msgstr ""
+msgstr "Para evitar errores y cambios erróneos, la ruta pasada debe ser absoluta"
 
 msgid "Search date and time patterns to delete innecesary files or directories"
 msgstr "Busca patrónes de fecha y hora para borrar ficheros o directorios innecesarios"
@@ -74,13 +74,10 @@ msgid "If it's established, removes empty directories recursivily from current p
 msgstr "Si se establece, borra todos los directorios vacios recursivamente desde la ruta actual."
 
 msgid "Directory who is going to be changed permissions and owner recursivily"
-msgstr ""
+msgstr "Directorio desde el que se van a cambiar permisos y propietario de forma recursiva"
 
 msgid "Path parameter must be an absolute one"
-msgstr ""
+msgstr "El parámetro de la ruta debe ser absoluta"
 
 msgid "{} empty dirs were removed"
 msgstr "{} directorios vacios fueron borrados"
-
-#~ msgid "Remove innecesary files or directories with a date and time pattern in the current directory."
-#~ msgstr "Borra ficheros o directorios innecesarios, que tengan un patrón de fecha y hora en el directorio actual."

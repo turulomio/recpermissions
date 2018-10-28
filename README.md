@@ -30,6 +30,9 @@ Dependencies
 
 Changelog
 =========
+0.2.1
+  * Solved critical bug. Directory now is set tu absolut_path parameter
+
 0.2.0
   * Added absolute path parameter to avoid errors and wrong changes
 
