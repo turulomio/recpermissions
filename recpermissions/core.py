@@ -14,6 +14,10 @@ try:
 except:
     _=str
 
+
+## Check if a directory is empty
+## @param dir String with the directory to check
+## @return boolean
 def is_dir_empty(dir):
     if not os.listdir(dir):
         return True
@@ -33,7 +37,6 @@ def main(arguments=None):
     parser.add_argument('--files', help=_("File permissions to set in all files. The default value is '%(default)s'."), default='644', metavar='PERM')
     parser.add_argument('--directories', help=_("Directory permissions to set in all directories. The default value is '%(default)s'."), default='755', metavar='PERM')
     parser.add_argument('--remove_emptydirs', help=_("If it's established, removes empty directories recursivily from current path."), action="store_true", default=False)
-    parser.add_argument('--verbose', help=_("If it's established, shows information of files and directories actions."), action="store_true", default=False)
 
     args=parser.parse_args(arguments)
 
@@ -55,8 +58,13 @@ def main(arguments=None):
             dirname= os.path.join(dirpath, d)
             shutil.chown(dirname, args.user, args.group)
             os.chmod(dirname, decimal_value_dirs)
+            if is_dir_empty(dirname):
+                os.rmdir(dirname)
+                deletedDirs=deletedDirs+1
         for f in filenames:
             filename= os.path.join(dirpath, f)
             shutil.chown(filename, args.user, args.group)
             os.chmod(filename, decimal_value_files)
 
+    if deletedDirs>0:
+        print(_("{} empty dirs were removed").format(deletedDirs))

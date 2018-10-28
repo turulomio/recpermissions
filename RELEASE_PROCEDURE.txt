@@ -1,16 +1,13 @@
 Nueva release
 =============
-1) Cambiar la versión y la fecha en __init__.py
+1) Cambiar la versión y la fecha en version.py
 2) Modificar el Changelog en el fichero README
-3) python3 setup.py doc. 
+3) python3 setup.py doc.
  ) lokalice es.po
  ) python3 setup.py doc
  ) python3 setup.py install
  ) python3 setup.py doxygen
-4) Si cambia la salida del programa, acutalizar el gif con bash launch.sh. 
- ) Actualizar el gif en myweb
+4) Hacer un nuevo tag en github
 5) python setup.py sdist upload -r pypi        Para subirlo a python
-6) Subir tar.gz al Sourceforge
-6) Subir versión al subversion
 6) Crear un nuevo ebuild con la nueva versión
 8) Subirlo al subversion del portage
