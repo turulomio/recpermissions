@@ -2,24 +2,6 @@ What is RecPermissions
 ======================
 It's a script to change permissions and owner recursivily from current directory. It can delete empty directories when necessary.
 
-Links
-=====
-
-Source code & Development:
-    https://github.com/Turulomio/recpermissions
-
-Doxygen documentation:
-    http://turulomio.users.sourceforge.net/doxygen/recpermissions/
-
-Main developer web page:
-    http://turulomio.users.sourceforge.net/en/proyectos.html
-    
-Pypi web page:
-    https://pypi.org/project/recpermissions/
-
-Gentoo ebuild
-    You can find a Gentoo ebuild in https://sourceforge.net/p/xulpymoney/code/HEAD/tree/myportage/app-admin/recpermissions/
-
 Usage
 =====
 
@@ -40,6 +22,25 @@ This command will change user and group to root user and group. Files will have 
 License
 =======
 GPL-3
+
+Links
+=====
+
+Source code & Development:
+    https://github.com/Turulomio/recpermissions
+
+Doxygen documentation:
+    http://turulomio.users.sourceforge.net/doxygen/recpermissions/
+
+Main developer web page:
+    http://turulomio.users.sourceforge.net/en/proyectos.html
+    
+Pypi web page:
+    https://pypi.org/project/recpermissions/
+
+Gentoo ebuild
+    You can find a Gentoo ebuild in https://sourceforge.net/p/xulpymoney/code/HEAD/tree/myportage/app-admin/recpermissions/
+
 
 Dependencies
 ============
