@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-20 18:12+0200\n"
+"POT-Creation-Date: 2018-10-28 06:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,85 +29,7 @@ msgstr ""
 msgid "This app has the following mandatory parameters:"
 msgstr ""
 
-msgid "Create two directories called 'example' and 'example_directories' in the current working directory and fill it with example files with date and time patterns."
-msgstr ""
-
-msgid "Makes a simulation selecting which files will be deleted when --remove parameter is used."
-msgstr ""
-
-msgid "Deletes files. Be careful, This can't be unmade. Use --pretend before."
-msgstr ""
-
-msgid "With --pretend and --remove you can use this parameters:"
-msgstr ""
-
-msgid "Sets the date and time pattern to search in the current directory filenames. It uses python strftime function format."
-msgstr ""
-
-msgid "I can't continue, there are different filename roots with date and time patterns:"
-msgstr ""
-
-msgid "I can't continue, there are files and directories with date and time patterns in the current path"
-msgstr ""
-
-msgid "Not developed yet"
-msgstr ""
-
-msgid "Delete"
-msgstr ""
-
-msgid "Over max number of files"
-msgstr ""
-
-msgid "Directories status pretending:"
-msgstr ""
-
-msgid "File status pretending:"
-msgstr ""
-
-msgid "So, {} files will be deleted and {} will be kept when you use --remove parameter."
-msgstr ""
-
-msgid "Directories status removing:"
-msgstr ""
-
-msgid "File status removing:"
-msgstr ""
-
-msgid "So, {} files have been deleted and {} files have been kept."
-msgstr ""
-
-msgid "Remains"
-msgstr ""
-
-msgid "R"
-msgstr ""
-
-msgid "D"
-msgstr ""
-
-msgid "Too young to delete"
-msgstr ""
-
-msgid "Y"
-msgstr ""
-
-msgid "Over max files"
-msgstr ""
-
-msgid "O"
-msgstr ""
-
-msgid "{} TooManyFiles in {} detected {} files with pattern {}"
-msgstr ""
-
-msgid "Different examples have been created in the directory 'toomanyfiles_examples'"
-msgstr ""
-
-msgid "'toomanyfiles_examples' directory removed"
-msgstr ""
-
-msgid "I can't remove 'toomanyfiles_examples' directory"
+msgid "User used to change files owner."
 msgstr ""
 
 msgid "Search date and time patterns to delete innecesary files or directories"
@@ -116,82 +38,22 @@ msgstr ""
 msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr ""
 
-msgid "Create example directories"
-msgstr ""
-
-msgid "Remove example directories'"
-msgstr ""
-
-msgid "Removes files permanently"
-msgstr ""
-
-msgid "Makes a simulation and doesn't remove files"
-msgstr ""
-
-msgid "Modifiers to use with --remove and --pretend"
+#, python-format
+msgid "File owner will be changed to this parameter. Default user is '%(default)s'"
 msgstr ""
 
 #, python-format
-msgid "Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."
+msgid "File owner group will be changed to this parameter. The default value is '%(default)s'."
 msgstr ""
 
 #, python-format
-msgid "Disable log generation. The default value is '%(default)s'."
+msgid "File permissions to set in all files. The default value is '%(default)s'."
 msgstr ""
 
 #, python-format
-msgid "Remove mode. The default value is '%(default)s'."
+msgid "Directory permissions to set in all directories. The default value is '%(default)s'."
 msgstr ""
 
 #, python-format
-msgid "Number of days to respect from today. The default value is '%(default)s'."
-msgstr ""
-
-#, python-format
-msgid "Maximum number of files to remain in directory. The default value is '%(default)s'."
-msgstr ""
-
-msgid "Error passing parameters"
-msgstr ""
-
-msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
-msgstr ""
-
-msgid "This is a video to show how to use 'toomanyfiles' command"
-msgstr ""
-
-msgid "We are going to create an example directory to learn how to use it"
-msgstr ""
-
-msgid "We are going to see the 10 last files of directory 'toomanyfiles_examples/files'"
-msgstr ""
-
-msgid "We can see files with temporal pattern 'YYYYmmdd HHMM' with a day variation"
-msgstr ""
-
-msgid "We use to find this kind of files in automatic backups, logs, ..."
-msgstr ""
-
-msgid "If we want to save our disk space and we want to keep some of them, we can use TooManyFiles program"
-msgstr ""
-
-msgid "So, We want to keep the last 5 files because they are too recent."
-msgstr ""
-
-msgid "We want to keep the first file of each month from the rest of the files until a max number the files of 15."
-msgstr ""
-
-msgid "We make a simulation with --pretend"
-msgstr ""
-
-msgid "We analyze the result with the output.."
-msgstr ""
-
-msgid "We like the result, so we can delete files replacing --pretend by --remove. Selected files will be removed permanently"
-msgstr ""
-
-msgid "We list the files remaining"
-msgstr ""
-
-msgid "That's all"
+msgid "If it's established, removes empty directories recursivily from current path. The default value is '%(default)s'."
 msgstr ""

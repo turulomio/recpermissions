@@ -27,22 +27,6 @@ class Doxygen(Command):
         os.system("rsync -avzP -e 'ssh -l turulomio' html/ frs.sourceforge.net:/home/users/t/tu/turulomio/userweb/htdocs/doxygen/recpermissions/ --delete-after")
         os.chdir("..")
 
-class Video(Command):
-    description = "Create video/GIF from console ouput"
-    user_options = []
-
-    def initialize_options(self):
-        pass
-
-    def finalize_options(self):
-        pass
-
-    def run(self):
-        os.chdir("doc/ttyrec")
-        os.system("ttyrecgenerator --output recpermissions_howto_es 'python3 howto.py' --lc_all es_ES.UTF-8")
-        os.system("ttyrecgenerator --output recpermissions_howto_en 'python3 howto.py' --lc_all C")
-        os.chdir("../..")
-
 
 class Uninstall(Command):
     description = "Uninstall installed files with install"
@@ -75,7 +59,7 @@ class Doc(Command):
 
     def run(self):
         #es
-        os.system("xgettext -L Python --no-wrap --no-location --from-code='UTF-8' -o locale/recpermissions.pot *.py recpermissions/*.py doc/ttyrec/*.py")
+        os.system("xgettext -L Python --no-wrap --no-location --from-code='UTF-8' -o locale/recpermissions.pot *.py recpermissions/*.py")
         os.system("msgmerge -N --no-wrap -U locale/es.po locale/recpermissions.pot")
         os.system("msgfmt -cv -o recpermissions/locale/es/LC_MESSAGES/recpermissions.mo locale/es.po")
 
@@ -95,28 +79,14 @@ class Doc(Command):
             man=Man("man/es/man1/recpermissions")
         print("  - DESCRIPTION in {} is {}".format(language, _("DESCRIPTION")))
 
-        man.setMetadata("recpermissions",  1,   datetime.date.today(), "Mariano Muñoz", _("Remove innecesary files or directories with a date and time pattern in the current directory."))
-        man.setSynopsis("""[-h] [--version] (--create_example | --remove | --pretend)
-                        [--pattern PATTERN] [--disable_log]
-                        [--remove_mode {RemainFirstInMonth,RemainLastInMonth}]
-                        [--too_young_to_delete TOO_YOUNG_TO_DELETE]
-                        [--max_files_to_store MAX_FILES_TO_STORE]""")
+        man.setMetadata("RecPermissions",  1,   datetime.date.today(), "Mariano Muñoz", _("Remove innecesary files or directories with a date and time pattern in the current directory."))
+        man.setSynopsis("""usage: recpermissions [-h] [--version] [--user USER] [--group GROUP]
+                      [--files FILES] [--directories DIRECTORIES]
+                      [--remove_empty_directories]""")
         man.header(_("DESCRIPTION"), 1)
         man.paragraph(_("This app has the following mandatory parameters:"), 1)
-        man.paragraph("--create_example", 2, True)
-        man.paragraph(_("Create two directories called 'example' and 'example_directories' in the current working directory and fill it with example files with date and time patterns."), 3)
-        man.paragraph("--pretend", 2, True)
-        man.paragraph(_("Makes a simulation selecting which files will be deleted when --remove parameter is used."), 3)
-        man.paragraph("--remove", 2, True)
-        man.paragraph(_("Deletes files. Be careful, This can't be unmade. Use --pretend before."), 3)
-        
-        man.paragraph(_("With --pretend and --remove you can use this parameters:"), 1)
-        man.paragraph("--pattern", 2, True)
-        man.paragraph(_("Sets the date and time pattern to search in the current directory filenames. It uses python strftime function format."), 3)
-        man.paragraph("--disable_log", 2, True)
-        man.paragraph("--remove_mode", 2, True)
-        man.paragraph("--too_young_to_delete", 2, True)
-        man.paragraph("--max_files_to_store", 2, True)
+        man.paragraph("--user", 2, True)
+        man.paragraph(_("User used to change files owner."), 3)
         man.save()
 
     ########################################################################
@@ -165,7 +135,6 @@ setup(name='recpermissions',
     cmdclass={ 'doxygen': Doxygen,
                'doc': Doc,
                'uninstall':Uninstall, 
-               'video': Video, 
              },
     zip_safe=False,
     include_package_data=True

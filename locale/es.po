@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-20 17:44+0200\n"
+"POT-Creation-Date: 2018-10-28 06:41+0100\n"
 "PO-Revision-Date: 2015-03-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -30,86 +30,8 @@ msgstr "Borra ficheros o directorios innecesarios, que tengan un patrón de fech
 msgid "This app has the following mandatory parameters:"
 msgstr "Esta aplicación tiene los siguientes parámetros obligatorios"
 
-msgid "Create two directories called 'example' and 'example_directories' in the current working directory and fill it with example files with date and time patterns."
-msgstr "Crea dos directorios de nombre 'example' y 'example_directories' en el directorio actual y los llena con ficheros de ejemplo que tengan patrónes de fecha y hora."
-
-msgid "Makes a simulation selecting which files will be deleted when --remove parameter is used."
-msgstr "Realiza una simulación seleccionando que ficheros serán borrados cuando se use el parámetro --remove."
-
-msgid "Deletes files. Be careful, This can't be unmade. Use --pretend before."
-msgstr "Borra los ficheros. Ten cuidado, esto no puede deshacerse. Usa antes --pretend."
-
-msgid "With --pretend and --remove you can use this parameters:"
-msgstr "Con --pretend y --remove puedes usar estos parámetros"
-
-msgid "Sets the date and time pattern to search in the current directory filenames. It uses python strftime function format."
-msgstr "Establece el patrón de fecha y hora para buscar en los nombres del directorio actual. Usa el formato de python de la funciónde strftime"
-
-msgid "I can't continue, there are different filename roots with date and time patterns:"
-msgstr "No puedo continuar, hay raices de nombres de ficheros distintas con patrones de fecha y hora:"
-
-msgid "I can't continue, there are files and directories with date and time patterns in the current path"
-msgstr "No puedo continuar, hay ficheros y directorios con patrones de fecha y hora en el directorio actual"
-
-msgid "Not developed yet"
-msgstr "No desarrollado todavía"
-
-msgid "Delete"
-msgstr "Borrado"
-
-msgid "Over max number of files"
-msgstr "Supera el número de ficheros a guardar"
-
-msgid "Directories status pretending:"
-msgstr "Estado de los directorios en la simulación:"
-
-msgid "File status pretending:"
-msgstr "Estado de los ficheros simulando:"
-
-msgid "So, {} files will be deleted and {} will be kept when you use --remove parameter."
-msgstr "De esta manera, {} ficheros serán borrados y {} serán guardados cuando uses el parámetro --remove."
-
-msgid "Directories status removing:"
-msgstr "Estado de los directorios en el borrado:"
-
-msgid "File status removing:"
-msgstr "Estado de los ficheros para borrar:"
-
-msgid "So, {} files have been deleted and {} files have been kept."
-msgstr "De esta manera, {} ficheros se han borrado y {} ficheros se han guardado."
-
-msgid "Remains"
-msgstr "Permanece"
-
-msgid "R"
-msgstr "P"
-
-msgid "D"
-msgstr "B"
-
-msgid "Too young to delete"
-msgstr "Muy joven para borrar"
-
-msgid "Y"
-msgstr "J"
-
-msgid "Over max files"
-msgstr "Supera el número de ficheros a guardar"
-
-msgid "O"
-msgstr "S"
-
-msgid "{} TooManyFiles in {} detected {} files with pattern {}"
-msgstr "{} TooManyFiles en {} detectó {} ficheros con el patrón {}"
-
-msgid "Different examples have been created in the directory 'toomanyfiles_examples'"
-msgstr "Se han creado varios ejemplos en el directorio 'toomanyfiles_examples'"
-
-msgid "'toomanyfiles_examples' directory removed"
-msgstr "El directorio 'toomanyfiles_examples' ha sido borrado"
-
-msgid "I can't remove 'toomanyfiles_examples' directory"
-msgstr "No puedo borrar el directorio 'toomanyfiles_examples'"
+msgid "User used to change files owner."
+msgstr ""
 
 msgid "Search date and time patterns to delete innecesary files or directories"
 msgstr "Busca patrónes de fecha y hora para borrar ficheros o directorios innecesarios"
@@ -117,85 +39,181 @@ msgstr "Busca patrónes de fecha y hora para borrar ficheros o directorios innec
 msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr "Desarrollado por Mariano Muñoz 2018-{}"
 
-msgid "Create example directories"
-msgstr "Crear directorios de ejemplo"
-
-msgid "Remove example directories'"
-msgstr "Borrar directorios de ejemplo"
-
-msgid "Removes files permanently"
-msgstr "Borra los ficheros permanentemente"
-
-msgid "Makes a simulation and doesn't remove files"
-msgstr "Realiza una simulación y no borra los ficheros"
-
-msgid "Modifiers to use with --remove and --pretend"
-msgstr "Parámetros a usar con --remove y --pretend"
+#, python-format
+msgid "File owner will be changed to this parameter. Default user is '%(default)s'"
+msgstr ""
 
 #, python-format
-msgid "Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."
-msgstr "Define un patrón de fecha y hora a buscar en el directorio actual. El patrón por defecto es '%(default)s'."
+msgid "File owner group will be changed to this parameter. The default value is '%(default)s'."
+msgstr ""
 
 #, python-format
-msgid "Disable log generation. The default value is '%(default)s'."
-msgstr "Desabilita la generación del registro. El valor por defecto es '%(default)s'."
+msgid "File permissions to set in all files. The default value is '%(default)s'."
+msgstr ""
 
 #, python-format
-msgid "Remove mode. The default value is '%(default)s'."
-msgstr "Modo de borrado. El valor por defecto es '%(default)s'."
+msgid "Directory permissions to set in all directories. The default value is '%(default)s'."
+msgstr ""
 
 #, python-format
-msgid "Number of days to respect from today. The default value is '%(default)s'."
-msgstr "Número de días que se respetan desde hoy sin borrar. El valor por defecto es '%(default)s'."
+msgid "If it's established, removes empty directories recursivily from current path. The default value is '%(default)s'."
+msgstr ""
 
-#, python-format
-msgid "Maximum number of files to remain in directory. The default value is '%(default)s'."
-msgstr "Máximo número de ficheros que quedarán en el directorio. El valor por defecto es '%(default)s'."
+#~ msgid "Create two directories called 'example' and 'example_directories' in the current working directory and fill it with example files with date and time patterns."
+#~ msgstr "Crea dos directorios de nombre 'example' y 'example_directories' en el directorio actual y los llena con ficheros de ejemplo que tengan patrónes de fecha y hora."
 
-msgid "Error passing parameters"
-msgstr "Error al pasar los parámetros"
+#~ msgid "Disable log generation. The default value is '%(default)s'."
+#~ msgstr "Desabilita la generación del registro. El valor por defecto es '%(default)s'."
 
-msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
-msgstr "El número de ficheros demasiado recientes para ser borrados no puede ser mayor que el máximo número de ficheros a guardar"
+#~ msgid "Remove mode. The default value is '%(default)s'."
+#~ msgstr "Modo de borrado. El valor por defecto es '%(default)s'."
 
-msgid "This is a video to show how to use 'toomanyfiles' command"
-msgstr "Este video muestra como usar el comando 'toomanyfiles'"
+#~ msgid "Number of days to respect from today. The default value is '%(default)s'."
+#~ msgstr "Número de días que se respetan desde hoy sin borrar. El valor por defecto es '%(default)s'."
 
-msgid "We are going to create an example directory to learn how to use it"
-msgstr "Vamos a crear un directorio de ejemplo para aprender a usarlo"
+#~ msgid "Maximum number of files to remain in directory. The default value is '%(default)s'."
+#~ msgstr "Máximo número de ficheros que quedarán en el directorio. El valor por defecto es '%(default)s'."
 
-msgid "We are going to see the 10 last files of directory 'toomanyfiles_examples/files'"
-msgstr "Vamos a ver los 10 últimos ficheros del directorio 'toomanyfiles_examples/files'"
+#~ msgid "Makes a simulation selecting which files will be deleted when --remove parameter is used."
+#~ msgstr "Realiza una simulación seleccionando que ficheros serán borrados cuando se use el parámetro --remove."
 
-msgid "We can see files with temporal pattern 'YYYYmmdd HHMM' with a day variation"
-msgstr "Podemos ver ficheros con el patrón temporal 'YYYYmmdd HHMM' con un día de variación"
+#~ msgid "Deletes files. Be careful, This can't be unmade. Use --pretend before."
+#~ msgstr "Borra los ficheros. Ten cuidado, esto no puede deshacerse. Usa antes --pretend."
 
-msgid "We use to find this kind of files in automatic backups, logs, ..."
-msgstr "Solemos encontrar este tipo de ficheros en copias de seguridad automáticas, logs, ..."
+#~ msgid "With --pretend and --remove you can use this parameters:"
+#~ msgstr "Con --pretend y --remove puedes usar estos parámetros"
 
-msgid "If we want to save our disk space and we want to keep some of them, we can use TooManyFiles program"
-msgstr "Si queremos ahorrar espacio en disco y queremos conservar algunos de ellos, podemos usar el programa TooManyFiles"
+#~ msgid "Sets the date and time pattern to search in the current directory filenames. It uses python strftime function format."
+#~ msgstr "Establece el patrón de fecha y hora para buscar en los nombres del directorio actual. Usa el formato de python de la funciónde strftime"
 
-msgid "So, We want to keep the last 5 files because they are too recent."
-msgstr "De esta manera, queremos conservar los 5 últimos ficheros porque son muy recientes."
+#~ msgid "I can't continue, there are different filename roots with date and time patterns:"
+#~ msgstr "No puedo continuar, hay raices de nombres de ficheros distintas con patrones de fecha y hora:"
 
-msgid "We want to keep the first file of each month from the rest of the files until a max number the files of 15."
-msgstr "Del resto de ficheros, queremos conservar el primer fichero de cada mes hasta un máximo de 15 ficheros en total"
+#~ msgid "I can't continue, there are files and directories with date and time patterns in the current path"
+#~ msgstr "No puedo continuar, hay ficheros y directorios con patrones de fecha y hora en el directorio actual"
 
-msgid "We make a simulation with --pretend"
-msgstr "Hacemos una simulación con --pretend"
+#~ msgid "Not developed yet"
+#~ msgstr "No desarrollado todavía"
 
-msgid "We analyze the result with the output.."
-msgstr "Analizamos el resultado..."
+#~ msgid "Delete"
+#~ msgstr "Borrado"
 
-msgid "We like the result, so we can delete files replacing --pretend by --remove. Selected files will be removed permanently"
-msgstr "Estamos de acuerdo con el resultado, por lo que podemos borrar los ficheros sustituyendo --pretend por --remove. Los ficheros seleccionados se borrarán permanentemente"
+#~ msgid "Over max number of files"
+#~ msgstr "Supera el número de ficheros a guardar"
 
-msgid "We list the files remaining"
-msgstr "Listamos los ficheros que han quedado"
+#~ msgid "Directories status pretending:"
+#~ msgstr "Estado de los directorios en la simulación:"
 
-msgid "That's all"
-msgstr "Eso es todo"
+#~ msgid "File status pretending:"
+#~ msgstr "Estado de los ficheros simulando:"
+
+#~ msgid "So, {} files will be deleted and {} will be kept when you use --remove parameter."
+#~ msgstr "De esta manera, {} ficheros serán borrados y {} serán guardados cuando uses el parámetro --remove."
+
+#~ msgid "Directories status removing:"
+#~ msgstr "Estado de los directorios en el borrado:"
+
+#~ msgid "File status removing:"
+#~ msgstr "Estado de los ficheros para borrar:"
+
+#~ msgid "So, {} files have been deleted and {} files have been kept."
+#~ msgstr "De esta manera, {} ficheros se han borrado y {} ficheros se han guardado."
+
+#~ msgid "Remains"
+#~ msgstr "Permanece"
+
+#~ msgid "R"
+#~ msgstr "P"
+
+#~ msgid "D"
+#~ msgstr "B"
+
+#~ msgid "Too young to delete"
+#~ msgstr "Muy joven para borrar"
+
+#~ msgid "Y"
+#~ msgstr "J"
+
+#~ msgid "Over max files"
+#~ msgstr "Supera el número de ficheros a guardar"
+
+#~ msgid "O"
+#~ msgstr "S"
+
+#~ msgid "{} TooManyFiles in {} detected {} files with pattern {}"
+#~ msgstr "{} TooManyFiles en {} detectó {} ficheros con el patrón {}"
+
+#~ msgid "Different examples have been created in the directory 'toomanyfiles_examples'"
+#~ msgstr "Se han creado varios ejemplos en el directorio 'toomanyfiles_examples'"
+
+#~ msgid "'toomanyfiles_examples' directory removed"
+#~ msgstr "El directorio 'toomanyfiles_examples' ha sido borrado"
+
+#~ msgid "I can't remove 'toomanyfiles_examples' directory"
+#~ msgstr "No puedo borrar el directorio 'toomanyfiles_examples'"
+
+#~ msgid "Create example directories"
+#~ msgstr "Crear directorios de ejemplo"
+
+#~ msgid "Remove example directories'"
+#~ msgstr "Borrar directorios de ejemplo"
+
+#~ msgid "Removes files permanently"
+#~ msgstr "Borra los ficheros permanentemente"
+
+#~ msgid "Makes a simulation and doesn't remove files"
+#~ msgstr "Realiza una simulación y no borra los ficheros"
+
+#~ msgid "Modifiers to use with --remove and --pretend"
+#~ msgstr "Parámetros a usar con --remove y --pretend"
+
+#~ msgid "Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."
+#~ msgstr "Define un patrón de fecha y hora a buscar en el directorio actual. El patrón por defecto es '%(default)s'."
+
+#~ msgid "Error passing parameters"
+#~ msgstr "Error al pasar los parámetros"
+
+#~ msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
+#~ msgstr "El número de ficheros demasiado recientes para ser borrados no puede ser mayor que el máximo número de ficheros a guardar"
+
+#~ msgid "This is a video to show how to use 'toomanyfiles' command"
+#~ msgstr "Este video muestra como usar el comando 'toomanyfiles'"
+
+#~ msgid "We are going to create an example directory to learn how to use it"
+#~ msgstr "Vamos a crear un directorio de ejemplo para aprender a usarlo"
+
+#~ msgid "We are going to see the 10 last files of directory 'toomanyfiles_examples/files'"
+#~ msgstr "Vamos a ver los 10 últimos ficheros del directorio 'toomanyfiles_examples/files'"
+
+#~ msgid "We can see files with temporal pattern 'YYYYmmdd HHMM' with a day variation"
+#~ msgstr "Podemos ver ficheros con el patrón temporal 'YYYYmmdd HHMM' con un día de variación"
+
+#~ msgid "We use to find this kind of files in automatic backups, logs, ..."
+#~ msgstr "Solemos encontrar este tipo de ficheros en copias de seguridad automáticas, logs, ..."
+
+#~ msgid "If we want to save our disk space and we want to keep some of them, we can use TooManyFiles program"
+#~ msgstr "Si queremos ahorrar espacio en disco y queremos conservar algunos de ellos, podemos usar el programa TooManyFiles"
+
+#~ msgid "So, We want to keep the last 5 files because they are too recent."
+#~ msgstr "De esta manera, queremos conservar los 5 últimos ficheros porque son muy recientes."
+
+#~ msgid "We want to keep the first file of each month from the rest of the files until a max number the files of 15."
+#~ msgstr "Del resto de ficheros, queremos conservar el primer fichero de cada mes hasta un máximo de 15 ficheros en total"
+
+#~ msgid "We make a simulation with --pretend"
+#~ msgstr "Hacemos una simulación con --pretend"
+
+#~ msgid "We analyze the result with the output.."
+#~ msgstr "Analizamos el resultado..."
+
+#~ msgid "We like the result, so we can delete files replacing --pretend by --remove. Selected files will be removed permanently"
+#~ msgstr "Estamos de acuerdo con el resultado, por lo que podemos borrar los ficheros sustituyendo --pretend por --remove. Los ficheros seleccionados se borrarán permanentemente"
+
+#~ msgid "We list the files remaining"
+#~ msgstr "Listamos los ficheros que han quedado"
+
+#~ msgid "That's all"
+#~ msgstr "Eso es todo"
 
 #~ msgid "There are files with datetime patterns with different roots"
 #~ msgstr "Hay ficheros con patrón de fecha y hora y diferentes nombres"
