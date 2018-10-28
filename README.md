@@ -1,5 +1,3 @@
-RecPermissions
-==============
 Script to change permissions and owner recursivily from current directory
 
 Source code & Development:
@@ -27,5 +25,6 @@ Changelog
 =========
 0.1.1
   * Solved bug in current path directory
+
 0.1.0
   * Creating infrastructure
