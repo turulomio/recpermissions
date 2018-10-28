@@ -2,11 +2,11 @@ import argparse
 from colorama import Fore, Style, init as colorama_init
 from recpermissions.version import __versiondate__, __version__
 import gettext
+import grp
 import os
 import pwd
 import shutil
-import grp
-
+import sys
 
 try:
     t=gettext.translation('recpermissions',pkg_resources.resource_filename("recpermissions","locale"))
@@ -37,10 +37,15 @@ def main(arguments=None):
     parser.add_argument('--files', help=_("File permissions to set in all files. The default value is '%(default)s'."), default='644', metavar='PERM')
     parser.add_argument('--directories', help=_("Directory permissions to set in all directories. The default value is '%(default)s'."), default='755', metavar='PERM')
     parser.add_argument('--remove_emptydirs', help=_("If it's established, removes empty directories recursivily from current path."), action="store_true", default=False)
+    parser.add_argument('absolute_path', help=_("Directory who is going to be changed permissions and owner recursivily"), action="store")
 
     args=parser.parse_args(arguments)
 
     colorama_init(autoreset=True)
+
+    if os.path.isabs(args.absolute_path)==False:
+        print(Fore.RED + Style.BRIGHT + _("Path parameter must be an absolute one") + Style.RESET_ALL)
+        sys.exit(1)
 
     deletedDirs=0
 

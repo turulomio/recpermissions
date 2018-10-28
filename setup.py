@@ -82,7 +82,7 @@ class Doc(Command):
         man.setMetadata("RecPermissions",  1,   datetime.date.today(), "Mariano Muñoz", _("Change files and directories owner and permissions recursively."))
         man.setSynopsis("""usage: recpermissions [-h] [--version] [--user USER] [--group GROUP]
                       [--files FILES] [--directories DIRECTORIES]
-                      [--remove_empty_directories]""")
+                      [--remove_empty_directories] path""")
         man.header(_("DESCRIPTION"), 1)
         man.paragraph(_("This app has the following mandatory parameters:"), 1)
         man.paragraph("--user", 2, True)
@@ -95,6 +95,8 @@ class Doc(Command):
         man.paragraph(_("Directory permissions in octal to be used. 755 by default."), 3)
         man.paragraph("--remove_emptydirs", 2, True)
         man.paragraph(_("When used in script, removes all empty dirs recursively from path."), 3)  
+        man.paragraph("absolute_path", 2, True)
+        man.paragraph(_("To avoid errors and wrong changes, path must be an absolute one."), 3)  
         man.save()
 
     ########################################################################

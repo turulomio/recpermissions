@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-28 08:27+0100\n"
+"POT-Creation-Date: 2018-10-28 11:12+0100\n"
 "PO-Revision-Date: 2018-10-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -32,6 +32,18 @@ msgstr "Esta aplicación tiene los siguientes parámetros obligatorios"
 
 msgid "User used to change files owner."
 msgstr "Usuario usado para cambiar el propietario de los ficheros"
+
+msgid "Group used to change files owner group."
+msgstr ""
+
+msgid "File permissions in octal to be used. 644 by default."
+msgstr ""
+
+msgid "Directory permissions in octal to be used. 755 by default."
+msgstr ""
+
+msgid "When used in script, removes all empty dirs recursively from path."
+msgstr ""
 
 msgid "Search date and time patterns to delete innecesary files or directories"
 msgstr "Busca patrónes de fecha y hora para borrar ficheros o directorios innecesarios"

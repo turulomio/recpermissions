@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-28 08:28+0100\n"
+"POT-Creation-Date: 2018-10-28 11:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,6 +30,18 @@ msgid "This app has the following mandatory parameters:"
 msgstr ""
 
 msgid "User used to change files owner."
+msgstr ""
+
+msgid "Group used to change files owner group."
+msgstr ""
+
+msgid "File permissions in octal to be used. 644 by default."
+msgstr ""
+
+msgid "Directory permissions in octal to be used. 755 by default."
+msgstr ""
+
+msgid "When used in script, removes all empty dirs recursively from path."
 msgstr ""
 
 msgid "Search date and time patterns to delete innecesary files or directories"
