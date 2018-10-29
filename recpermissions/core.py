@@ -1,6 +1,7 @@
 import argparse
 from colorama import Fore, Style, init as colorama_init
 from recpermissions.version import __versiondate__, __version__
+from stat import ST_MODE
 import gettext
 import grp
 import os
@@ -23,6 +24,22 @@ def is_dir_empty(dir):
         return True
     else:
         return False
+
+## Gets octal string permissions from a file
+## @param path String with the path. Can be a dir or a file
+## @return string "644" or "755", for example
+def get_octal_string_permissions(path):
+    return oct(os.stat(path)[ST_MODE])[-3:]
+
+## Gets user and root from a path
+## @param path String with the path. Can be a dir or a file
+## @return a tuple (root, root), for example
+def get_file_ownership(path):
+    return (
+        pwd.getpwuid(os.stat(path).st_uid).pw_name,
+        grp.getgrgid(os.stat(path).st_gid).gr_name
+    )
+
 
 ## recpermissions main script
 ## If arguments is None, launches with sys.argc parameters. Entry point is recpermissions:main
@@ -47,23 +64,52 @@ def main(arguments=None):
         print(Fore.RED + Style.BRIGHT + _("Path parameter must be an absolute one") + Style.RESET_ALL)
         sys.exit(1)
 
-    deletedDirs=0
+    deleted_dirs=[]
+    found_files=0
+    found_dirs=0
+    changed_dirs=[]
+    changed_files=[]
+    error_files=[]
 
     decimal_value_files=int(args.files,8)
     decimal_value_dirs=int(args.directories,8)
 
     for (dirpath, dirnames, filenames) in os.walk(args.absolute_path):
         for d in dirnames:
+            found_dirs=found_dirs+1
             dirname= os.path.join(dirpath, d)
-            shutil.chown(dirname, args.user, args.group)
-            os.chmod(dirname, decimal_value_dirs)
+            #print(get_file_ownership(dirname),(args.user,args.group))
+            if os.path.exists(dirname)==False:
+                error_files.append(dirname)
+                continue
+            if get_octal_string_permissions(dirname)!=args.directories or get_file_ownership(dirname)!=(args.user, args.group):
+                changed_dirs.append(dirname)
+                shutil.chown(dirname, args.user, args.group)
+                os.chmod(dirname, decimal_value_dirs)
             if is_dir_empty(dirname):
                 os.rmdir(dirname)
-                deletedDirs=deletedDirs+1
+                deleted_dirs.append(dirname)
         for f in filenames:
+            found_files=found_files+1
             filename= os.path.join(dirpath, f)
-            shutil.chown(filename, args.user, args.group)
-            os.chmod(filename, decimal_value_files)
+            if os.path.exists(filename)==False:
+                error_files.append(filename)
+                continue
+            #print (get_octal_string_permissions(filename), args.files, get_file_ownership(filename), (args.user, args.group))
+            if get_octal_string_permissions(filename)!=args.files or get_file_ownership(filename)!=(args.user, args.group):
+                changed_files.append(filename)
+                shutil.chown(filename, args.user, args.group)
+                os.chmod(filename, decimal_value_files)
 
-    if deletedDirs>0:
-        print(_("{} empty dirs were removed").format(Fore.RED + Style.BRIGHT + str(deletedDirs)+ Style.RESET_ALL))
+    #if deleted_dirs>0:
+    #    print(_("{} empty dirs were removed").format(Fore.RED + Style.BRIGHT + str(deleted_dirs)+ Style.RESET_ALL))
+
+    print(_("RecPermissions summary"))
+    print("  * Directories found: {}".format(found_dirs))
+    print("  * Files found: {}".format(found_files))
+    print("  * Directories changed: {}".format(len(changed_dirs)))
+    print("  * Files changed: {}".format(len(changed_files)))
+    print("  * Directories deleted: {}".format(len(deleted_dirs)))
+    print("  * Error files: {}".format(len(error_files)))
+    for e in error_files:
+        print("     + {}".format(e))
