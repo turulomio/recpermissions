@@ -5,6 +5,10 @@ It's a script to change permissions and owner recursivily from current directory
 Usage
 =====
 
+Here you have a console video example:
+
+![English howto](https://raw.githubusercontent.com/Turulomio/recpermissions/master/doc/ttyrec/recpermissions_howto_en.gif)
+
 Basic Example
 -------------
 
