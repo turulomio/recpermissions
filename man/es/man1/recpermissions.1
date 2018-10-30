@@ -1,4 +1,4 @@
-.TH RECPERMISSIONS 1 2018\-10\-28
+.TH RECPERMISSIONS 1 2018\-10\-30
 .SH NAME
 
 .B RecPermissions:
@@ -87,7 +87,7 @@ recpermissions /home/user
 .PP
 .RS
 .RS
-This command will change user and group to current user and to current user main group. Files will have rw\-r\-\-r\-\- permisions and directories rwxr\-xr\-x permisions. If the script finds empty dirs it will NOT remove them:
+Este comando cambiar\('a el usuario y el grupo al usuario y grupo principal logueado. Los ficheros tendr\('an los permisos rw\-r\-\-r\-\- y los directorios rwxr\-xr\-x. Si el script encontrara directorios vacios NO los borrar\('a:
 .RE
 .RE
 .PP
@@ -103,6 +103,6 @@ recpermissions \-\-user root \-\-group root \-\-files 640 \-\-directories 750 \-
 .PP
 .RS
 .RS
-This command will change user and group to root user and group. Files will have rw\-r\-\-\-\-\- permisions and directories rwxr\-x\-\-\- permisions. If the script finds empty dirs it will remove them:
+Este comando cambiar\('a el usuario a 'root' y el grupo a 'root'. Los ficheros tendr\('an los permisos rw\-r\-\-\-\-\- y los directorios los permisos rwxr\-x\-\-\-. Si el script encontrara directorios vacios los borrar\('a:
 .RE
 .RE

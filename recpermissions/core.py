@@ -104,12 +104,13 @@ def main(arguments=None):
     #if deleted_dirs>0:
     #    print(_("{} empty dirs were removed").format(Fore.RED + Style.BRIGHT + str(deleted_dirs)+ Style.RESET_ALL))
 
-    print(_("RecPermissions summary"))
-    print("  * Directories found: {}".format(found_dirs))
-    print("  * Files found: {}".format(found_files))
-    print("  * Directories changed: {}".format(len(changed_dirs)))
-    print("  * Files changed: {}".format(len(changed_files)))
-    print("  * Directories deleted: {}".format(len(deleted_dirs)))
-    print("  * Error files: {}".format(len(error_files)))
-    for e in error_files:
-        print("     + {}".format(e))
+    print(Style.BRIGHT + _("RecPermissions summary:"))
+    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories found: ") + Fore.YELLOW + str(found_dirs))
+    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Files found: ") + Fore.YELLOW + str(found_files))
+    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories changed: ") + Fore.YELLOW + str(len(changed_dirs)))
+    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Files changed: ") + Fore.YELLOW + str(len(changed_files)))
+    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories deleted: ") + Fore.YELLOW + str(len(deleted_dirs)))
+    if len(error_files)>0:
+        print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET +  _("{} error files:").format(Fore.RED + str(len(error_files))+ Fore.RESET))
+        for e in error_files:
+            print(Style.BRIGHT + Fore.RED + "     + " + Style.RESET_ALL + e)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-28 21:33+0100\n"
+"POT-Creation-Date: 2018-10-30 04:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,5 +99,23 @@ msgstr ""
 msgid "Path parameter must be an absolute one"
 msgstr ""
 
-msgid "{} empty dirs were removed"
+msgid "RecPermissions summary:"
+msgstr ""
+
+msgid "Directories found: "
+msgstr ""
+
+msgid "Files found: "
+msgstr ""
+
+msgid "Directories changed: "
+msgstr ""
+
+msgid "Files changed: "
+msgstr ""
+
+msgid "Directories deleted: "
+msgstr ""
+
+msgid "{} error files:"
 msgstr ""
