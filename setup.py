@@ -81,8 +81,8 @@ class Doc(Command):
 
         man.setMetadata("RecPermissions",  1,   datetime.date.today(), "Mariano Muñoz", _("Change files and directories owner and permissions recursively."))
         man.setSynopsis("""usage: recpermissions [-h] [--version] [--user USER] [--group GROUP]
-                      [--files FILES] [--directories DIRECTORIES]
-                      [--remove_empty_directories] absolute_path""")
+                      [--files PERM] [--directories PERM] [--remove_emptydirs]
+                      absolute_path""")
         man.header(_("DESCRIPTION"), 1)
         man.paragraph(_("This app has the following mandatory parameters:"), 1)
         man.paragraph("--user", 2, True)
