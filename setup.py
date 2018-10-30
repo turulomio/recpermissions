@@ -7,6 +7,9 @@ import os
 import platform
 import site
 
+
+gettext.install('recpermissions', 'recpermissions/locale')
+
 class Doxygen(Command):
     description = "Create/update doxygen documentation in doc/html"
     user_options = []
@@ -59,7 +62,7 @@ class Doc(Command):
 
     def run(self):
         #es
-        os.system("xgettext -L Python --no-wrap --no-location --from-code='UTF-8' -o locale/recpermissions.pot *.py recpermissions/*.py")
+        os.system("xgettext -L Python --no-wrap --no-location --from-code='UTF-8' -o locale/recpermissions.pot *.py recpermissions/*.py doc/ttyrec/*.py")
         os.system("msgmerge -N --no-wrap -U locale/es.po locale/recpermissions.pot")
         os.system("msgfmt -cv -o recpermissions/locale/es/LC_MESSAGES/recpermissions.mo locale/es.po")
 
@@ -71,7 +74,6 @@ class Doc(Command):
             Create man pages for parameter language
         """
         if language=="en":
-            gettext.install('recpermissions', 'badlocale')
             man=Man("man/man1/recpermissions")
         else:
             lang1=gettext.translation('recpermissions', 'recpermissions/locale', languages=[language])
@@ -105,6 +107,23 @@ class Doc(Command):
         man.paragraph(_("recpermissions --user root --group root --files 640 --directories 750 --remove_emptydirs /home/user/"), 3)
         man.paragraph(_("This command will change user and group to root user and group. Files will have rw-r----- permisions and directories rwxr-x--- permisions. If the script finds empty dirs it will remove them:"), 3)
         man.save()
+
+class Video(Command):
+    description = "Create video/GIF from console ouput"
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        print(_("You need ttyrecgenerator installed to generate videos"))
+        os.chdir("doc/ttyrec")
+        os.system("ttyrecgenerator --output recpermissions_howto_es 'python3 howto.py' --lc_all es_ES.UTF-8")
+        os.system("ttyrecgenerator --output recpermissions_howto_en 'python3 howto.py' --lc_all C")
+        os.chdir("../..")
 
     ########################################################################
 
@@ -151,7 +170,8 @@ setup(name='recpermissions',
     data_files=data_files,
     cmdclass={ 'doxygen': Doxygen,
                'doc': Doc,
-               'uninstall':Uninstall, 
+               'uninstall': Uninstall,
+               'video': Video,
              },
     zip_safe=False,
     include_package_data=True

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-30 03:57+0100\n"
+"POT-Creation-Date: 2018-10-30 05:59+0100\n"
 "PO-Revision-Date: 2018-10-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -69,6 +69,9 @@ msgstr "recpermissions --user root --group root --files 640 --directories 750 --
 msgid "This command will change user and group to root user and group. Files will have rw-r----- permisions and directories rwxr-x--- permisions. If the script finds empty dirs it will remove them:"
 msgstr "Este comando cambiará el usuario a 'root' y el grupo a 'root'. Los ficheros tendrán los permisos rw-r----- y los directorios los permisos rwxr-x---. Si el script encontrara directorios vacios los borrará:"
 
+msgid "You need ttyrecgenerator installed to generate videos"
+msgstr "Necesitas instalar 'ttyrecgenerator' para generar videos"
+
 msgid "Search date and time patterns to delete innecesary files or directories"
 msgstr "Busca patrónes de fecha y hora para borrar ficheros o directorios innecesarios"
 
@@ -120,6 +123,21 @@ msgstr "Directorios borrados: "
 
 msgid "{} error files:"
 msgstr "{} errores en ficheros:"
+
+msgid "This is a video to show how to use 'recpermissions' command"
+msgstr "Este video muestra como usar el comando 'recpermissions'"
+
+msgid "We list files with permissions and owners"
+msgstr "Listamos los permisos y propietarios de los ficheros"
+
+msgid "We want to change them to root:root owner. Files to 640 permissions, directories to 750. We want to remove empty directories too, so we use:"
+msgstr "Queremos cambiarlos al propietario root:root. Los ficheros a los permisos 640 y los directorios a 750. Tambien queremos borrar los directorios vacios, por lo que usamos:"
+
+msgid "We check the result"
+msgstr "Comprobamos el resultado"
+
+msgid "That's all"
+msgstr "Eso es todo"
 
 #~ msgid "{} empty dirs were removed"
 #~ msgstr "{} directorios vacios fueron borrados"

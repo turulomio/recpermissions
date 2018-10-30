@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-30 05:21+0100\n"
+"POT-Creation-Date: 2018-10-30 06:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,6 +68,9 @@ msgstr ""
 msgid "This command will change user and group to root user and group. Files will have rw-r----- permisions and directories rwxr-x--- permisions. If the script finds empty dirs it will remove them:"
 msgstr ""
 
+msgid "You need ttyrecgenerator installed to generate videos"
+msgstr ""
+
 msgid "Search date and time patterns to delete innecesary files or directories"
 msgstr ""
 
@@ -118,4 +121,19 @@ msgid "Directories deleted: "
 msgstr ""
 
 msgid "{} error files:"
+msgstr ""
+
+msgid "This is a video to show how to use 'recpermissions' command"
+msgstr ""
+
+msgid "We list files with permissions and owners"
+msgstr ""
+
+msgid "We want to change them to root:root owner. Files to 640 permissions, directories to 750. We want to remove empty directories too, so we use:"
+msgstr ""
+
+msgid "We check the result"
+msgstr ""
+
+msgid "That's all"
 msgstr ""
