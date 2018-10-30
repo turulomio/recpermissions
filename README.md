@@ -49,6 +49,12 @@ Dependencies
 
 Changelog
 =========
+1.0.0
+  * Version fully operational
+  * Added howto video in English and Spanish
+  * Man pages and spanish translation have been improved
+  * Added summary and added io error exception catching
+
 0.2.1
   * Solved critical bug. Directory now is set tu absolut_path parameter
 
