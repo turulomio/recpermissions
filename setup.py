@@ -30,6 +30,31 @@ class Doxygen(Command):
         os.system("rsync -avzP -e 'ssh -l turulomio' html/ frs.sourceforge.net:/home/users/t/tu/turulomio/userweb/htdocs/doxygen/recpermissions/ --delete-after")
         os.chdir("..")
 
+class Procedure(Command):
+    description = "Create/update doxygen documentation in doc/html"
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        print(_("New Release:"))
+        print(_("  * Cambiar la versión y la fecha en version.py"))
+        print(_("  * Modificar el Changelog en el fichero README"))
+        print("  * python3 setup.py doc")
+        print("  * mcedit locale/es.po")
+        print("  * python3 setup.py doc")
+        print("  * python3 setup.py install")
+        print("  * python3 setup.py doxygen")
+        print("  * git commit -a -m 'Comment'")
+        print("  * git push")
+        print(_("  * Make a new tag in github"))
+        print("  * python setup.py sdist upload -r pypi")
+        print(_("  * Create a new gentoo ebuild with the new version"))
+        print(_("  * Upload to portage repository"))
 
 class Uninstall(Command):
     description = "Uninstall installed files with install"
@@ -172,6 +197,7 @@ setup(name='recpermissions',
                'doc': Doc,
                'uninstall': Uninstall,
                'video': Video,
+               'procedure': Procedure,
              },
     zip_safe=False,
     include_package_data=True
