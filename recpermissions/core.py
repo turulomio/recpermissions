@@ -31,6 +31,23 @@ def is_dir_empty(dir):
 def get_octal_string_permissions(path):
     return oct(os.stat(path)[ST_MODE])[-3:]
 
+## Sets octal string permissions to a file
+## @param path String with the path. Can be a dir or a file
+## @param octal String with octal permissions. "644" or "755" for example
+## @return Boolean if file has been changed
+def set_octal_string_permissions(path, octal):
+    if octal==None:
+        return False
+    if get_octal_string_permissions(path)==octal:
+        return False
+    else:
+        try:
+            os.chmod(path, int(octal, 8))
+            return True
+        except:
+            return False
+
+
 ## Gets user and root from a path
 ## @param path String with the path. Can be a dir or a file
 ## @return a tuple (root, root), for example
@@ -38,7 +55,29 @@ def get_file_ownership(path):
     return (
         pwd.getpwuid(os.stat(path).st_uid).pw_name,
         grp.getgrgid(os.stat(path).st_gid).gr_name
-    )
+)
+
+
+## Set file user and grup
+## @param path String with the path. Can be a dir or a file
+## @param user String or None. If none it doesn't change the user
+## @param group String or None. If none it doesn't change the group
+## @return Boolean if file has been changed
+def set_file_ownership(path, user, group):
+    if (user, group)==(None, None):
+        return False
+    tuple=get_file_ownership(path)
+    if tuple==(user, group):
+        return False
+    else:
+        user=tuple[0] if user==None else user
+        group=tuple[1] if group==None else group
+        try:
+            shutil.chown(path, user, group)
+            return True
+        except:
+            return False
+
 
 
 ## recpermissions main script
@@ -49,10 +88,10 @@ def main(arguments=None):
     parser=argparse.ArgumentParser(prog='recpermissions', description=_('Search date and time patterns to delete innecesary files or directories'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(__versiondate__.year)), formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument('--version', action='version', version=__version__)
 
-    parser.add_argument('--user', help=_("File owner will be changed to this parameter. Default user is '%(default)s'"), action="store", default=os.environ['USER'])
-    parser.add_argument('--group', help=_("File owner group will be changed to this parameter. The default value is '%(default)s'."), action="store", default=grp.getgrgid(os.getgid()).gr_name)
-    parser.add_argument('--files', help=_("File permissions to set in all files. The default value is '%(default)s'."), default='644', metavar='PERM')
-    parser.add_argument('--directories', help=_("Directory permissions to set in all directories. The default value is '%(default)s'."), default='755', metavar='PERM')
+    parser.add_argument('--user', help=_("File owner will be changed to this parameter. It does nothing if it's not set."), action="store", default=None)
+    parser.add_argument('--group', help=_("File owner group will be changed to this parameter. It does nothing if it's not set."), action="store", default=None)
+    parser.add_argument('--files', help=_("File permissions to set in all files. It does nothing if it's not set."), default=None, metavar='PERM')
+    parser.add_argument('--directories', help=_("Directory permissions to set in all directories. It does nothing if it's not set."), default=None, metavar='PERM')
     parser.add_argument('--remove_emptydirs', help=_("If it's established, removes empty directories recursivily from current path."), action="store_true", default=False)
     parser.add_argument('absolute_path', help=_("Directory who is going to be changed permissions and owner recursivily"), action="store")
 
@@ -71,38 +110,34 @@ def main(arguments=None):
     changed_files=[]
     error_files=[]
 
-    decimal_value_files=int(args.files,8)
-    decimal_value_dirs=int(args.directories,8)
-
     for (dirpath, dirnames, filenames) in os.walk(args.absolute_path):
         for d in dirnames:
             found_dirs=found_dirs+1
             dirname= os.path.join(dirpath, d)
-            #print(get_file_ownership(dirname),(args.user,args.group))
+
             if os.path.exists(dirname)==False:
                 error_files.append(dirname)
                 continue
-            if get_octal_string_permissions(dirname)!=args.directories or get_file_ownership(dirname)!=(args.user, args.group):
+
+            if (set_octal_string_permissions(dirname,args.directories) or set_file_ownership(dirname, args.user, args.group))==True:
                 changed_dirs.append(dirname)
-                shutil.chown(dirname, args.user, args.group)
-                os.chmod(dirname, decimal_value_dirs)
-            if is_dir_empty(dirname):
-                os.rmdir(dirname)
-                deleted_dirs.append(dirname)
+
+            if args.remove_emptydirs==True:
+                if is_dir_empty(dirname):
+                    os.rmdir(dirname)
+                    deleted_dirs.append(dirname)
+
         for f in filenames:
             found_files=found_files+1
             filename= os.path.join(dirpath, f)
+
             if os.path.exists(filename)==False:
                 error_files.append(filename)
                 continue
-            #print (get_octal_string_permissions(filename), args.files, get_file_ownership(filename), (args.user, args.group))
-            if get_octal_string_permissions(filename)!=args.files or get_file_ownership(filename)!=(args.user, args.group):
-                changed_files.append(filename)
-                shutil.chown(filename, args.user, args.group)
-                os.chmod(filename, decimal_value_files)
+            
+            if (set_octal_string_permissions(filename, args.files) or set_file_ownership(filename, args.user, args.group))==True:
+                changed_files.append(dirname)
 
-    #if deleted_dirs>0:
-    #    print(_("{} empty dirs were removed").format(Fore.RED + Style.BRIGHT + str(deleted_dirs)+ Style.RESET_ALL))
 
     print(Style.BRIGHT + _("RecPermissions summary:"))
     print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories found: ") + Fore.YELLOW + str(found_dirs))
