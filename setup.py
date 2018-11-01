@@ -56,7 +56,7 @@ class Procedure(Command):
         print(_("  * Make a new tag in github"))
         print("  * python setup.py sdist upload -r pypi")
         print(_("  * Create a new gentoo ebuild with the new version"))
-        print(_("  * Upload to portage repository"))
+        print(_("  * Upload to portage repository")) 
 
 class Uninstall(Command):
     description = "Uninstall installed files with install"
