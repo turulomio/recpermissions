@@ -43,6 +43,9 @@ Dependencies
 
 Changelog
 =========
+1.2.0
+  * Due to a boolean logic error, some changes didn't took place
+
 1.1.0
   * Added 30 seconds to reload video in howto.py
   * Nothing is changed if --user --group --files or --directories is not set.

@@ -118,8 +118,10 @@ def main(arguments=None):
             if os.path.exists(dirname)==False:
                 error_files.append(dirname)
                 continue
+            b_permissions=set_octal_string_permissions(dirname,args.directories)
+            b_ownership=set_file_ownership(dirname, args.user, args.group)
 
-            if (set_octal_string_permissions(dirname,args.directories) or set_file_ownership(dirname, args.user, args.group))==True:
+            if b_permissions==True or b_ownership==True:
                 changed_dirs.append(dirname)
 
             if args.remove_emptydirs==True:
@@ -134,10 +136,11 @@ def main(arguments=None):
             if os.path.exists(filename)==False:
                 error_files.append(filename)
                 continue
-            
-            if (set_octal_string_permissions(filename, args.files) or set_file_ownership(filename, args.user, args.group))==True:
-                changed_files.append(dirname)
 
+            b_permissions=set_octal_string_permissions(filename, args.files)
+            b_ownership=set_file_ownership(filename, args.user, args.group)
+            if b_permissions or b_ownership==True:
+                changed_files.append(dirname)
 
     print(Style.BRIGHT + _("RecPermissions summary:"))
     print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories found: ") + Fore.YELLOW + str(found_dirs))
