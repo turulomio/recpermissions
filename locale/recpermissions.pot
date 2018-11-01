@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-30 06:15+0100\n"
+"POT-Creation-Date: 2018-11-01 20:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,24 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "New Release:"
+msgstr ""
+
+msgid "  * Cambiar la versión y la fecha en version.py"
+msgstr ""
+
+msgid "  * Modificar el Changelog en el fichero README"
+msgstr ""
+
+msgid "  * Make a new tag in github"
+msgstr ""
+
+msgid "  * Create a new gentoo ebuild with the new version"
+msgstr ""
+
+msgid "  * Upload to portage repository"
+msgstr ""
 
 msgid "Uninstall command only works in Linux"
 msgstr ""
@@ -32,13 +50,16 @@ msgstr ""
 msgid "User used to change files owner."
 msgstr ""
 
+msgid "It does nothing if it's not set"
+msgstr ""
+
 msgid "Group used to change files owner group."
 msgstr ""
 
-msgid "File permissions in octal to be used. 644 by default."
+msgid "File permissions in octal to be used."
 msgstr ""
 
-msgid "Directory permissions in octal to be used. 755 by default."
+msgid "Directory permissions in octal to be used."
 msgstr ""
 
 msgid "When used in script, removes all empty dirs recursively from path."
@@ -50,13 +71,22 @@ msgstr ""
 msgid "EXAMPLES"
 msgstr ""
 
-msgid "Basic Example"
+msgid "Null Example"
 msgstr ""
 
 msgid "recpermissions /home/user/"
 msgstr ""
 
-msgid "This command will change user and group to current user and to current user main group. Files will have rw-r--r-- permisions and directories rwxr-xr-x permisions. If the script finds empty dirs it will NOT remove them:"
+msgid "This comand does nothing"
+msgstr ""
+
+msgid "Partial Example"
+msgstr ""
+
+msgid "recpermissions --user user --files 644 /home/user/"
+msgstr ""
+
+msgid "This command only changes user permissions and files permissions to 644. Group and directory permissions are not changed:"
 msgstr ""
 
 msgid "Full Example"
@@ -77,20 +107,16 @@ msgstr ""
 msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr ""
 
-#, python-format
-msgid "File owner will be changed to this parameter. Default user is '%(default)s'"
+msgid "File owner will be changed to this parameter. It does nothing if it's not set."
 msgstr ""
 
-#, python-format
-msgid "File owner group will be changed to this parameter. The default value is '%(default)s'."
+msgid "File owner group will be changed to this parameter. It does nothing if it's not set."
 msgstr ""
 
-#, python-format
-msgid "File permissions to set in all files. The default value is '%(default)s'."
+msgid "File permissions to set in all files. It does nothing if it's not set."
 msgstr ""
 
-#, python-format
-msgid "Directory permissions to set in all directories. The default value is '%(default)s'."
+msgid "Directory permissions to set in all directories. It does nothing if it's not set."
 msgstr ""
 
 msgid "If it's established, removes empty directories recursivily from current path."

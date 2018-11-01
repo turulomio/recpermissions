@@ -9,19 +9,9 @@ Here you have a console video example:
 
 ![English howto](https://raw.githubusercontent.com/Turulomio/recpermissions/master/doc/ttyrec/recpermissions_howto_en.gif)
 
-Basic Example
--------------
+Once installed, you can see man documentation with
 
-This command will change user and group to current user and to current user main group. Files will have rw-r--r-- permisions and directories rwxr-xr-x permisions. If the script finds empty dirs it will NOT remove them:
-
-`recpermissions /home/user/`
-
-Full Example
-------------
-
-This command will change user and group to root user and group. Files will have rw-r----- permisions and directories rwxr-x--- permisions. If the script finds empty dirs it will remove them:
-
-`recpermissions --user root --group root --files 640 --directories 750 --remove_emptydirs /home/user/`
+`man recpermissions`
 
 License
 =======
@@ -53,6 +43,10 @@ Dependencies
 
 Changelog
 =========
+1.1.0
+  * Added 30 seconds to reload video in howto.py
+  * Nothing is changed if --user --group --files or --directories is not set.
+
 1.0.0
   * Version fully operational
   * Added howto video in English and Spanish

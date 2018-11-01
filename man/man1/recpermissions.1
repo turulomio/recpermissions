@@ -1,4 +1,4 @@
-.TH RECPERMISSIONS 1 2018\-10\-30
+.TH RECPERMISSIONS 1 2018\-11\-01
 .SH NAME
 
 .B RecPermissions:
@@ -19,7 +19,7 @@ Esta aplicaci\('on tiene los siguientes par\('ametros obligatorios
 .PP
 .RS
 .RS
-Usuario usado para cambiar el propietario de los ficheros
+Usuario usado para cambiar el propietario de los ficheros No hace nada si no se ha establecido
 .RE
 .RE
 .PP
@@ -29,7 +29,7 @@ Usuario usado para cambiar el propietario de los ficheros
 .PP
 .RS
 .RS
-Grupo usado para cambiar el grupo del propietario del fichero
+Grupo usado para cambiar el grupo del propietario del fichero No hace nada si no se ha establecido
 .RE
 .RE
 .PP
@@ -39,7 +39,7 @@ Grupo usado para cambiar el grupo del propietario del fichero
 .PP
 .RS
 .RS
-Permisos de ficheros a usar en octal. 644 por defecto.
+Permisos del fichero en octal a usar No hace nada si no se ha establecido
 .RE
 .RE
 .PP
@@ -49,7 +49,7 @@ Permisos de ficheros a usar en octal. 644 por defecto.
 .PP
 .RS
 .RS
-Permisos de directorio a usar en octal. 755 por defecto.
+Permisos del directorio en octal a usar No hace nada si no se ha establecido
 .RE
 .RE
 .PP
@@ -76,7 +76,7 @@ Para evitar errores y cambios err\('oneos, la ruta pasada debe ser absoluta
 
 .PP
 .RS
-.B Ejemplo b\('asico
+.B Ejemplo nulo
 .RE
 .PP
 .RS
@@ -87,7 +87,23 @@ recpermissions /home/user
 .PP
 .RS
 .RS
-Este comando cambiar\('a el usuario y el grupo al usuario y grupo principal logueado. Los ficheros tendr\('an los permisos rw\-r\-\-r\-\- y los directorios rwxr\-xr\-x. Si el script encontrara directorios vacios NO los borrar\('a:
+This comand does nothing
+.RE
+.RE
+.PP
+.RS
+.B Ejemplo parcial
+.RE
+.PP
+.RS
+.RS
+recpermissions \-\-user user \-\-files 644 /home/user/
+.RE
+.RE
+.PP
+.RS
+.RS
+Este comando solo cambia el usuario y los permisos del fichero a 644. El grupo y los permisos de los directorios no son cambiados:
 .RE
 .RE
 .PP
