@@ -26,7 +26,7 @@ r.command("recpermissions --user root --group root --files 640 --directories 750
 r.comment("# " + _("We check the result"))
 r.command("ls -la")
 r.comment("# " + _("That's all"))
-time.sleep(5)
+time.sleep(30)
 
 #We remove example
 os.system("rm -Rf directory")
