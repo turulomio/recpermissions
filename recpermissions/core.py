@@ -50,12 +50,12 @@ def set_octal_string_permissions(path, octal):
 
 ## Gets user and root from a path
 ## @param path String with the path. Can be a dir or a file
-## @return a tuple (root, root), for example
+## @return a tuple (root, root), for example. If uid of the file isn't in /etc/passwd, returns uid and gid
 def get_file_ownership(path):
-    return (
-        pwd.getpwuid(os.stat(path).st_uid).pw_name,
-        grp.getgrgid(os.stat(path).st_gid).gr_name
-)
+    try:
+        return (pwd.getpwuid(os.stat(path).st_uid).pw_name, grp.getgrgid(os.stat(path).st_gid).gr_name)
+    except:
+        return (os.stat(path).st_uid, os.stat(path).st_gid)
 
 
 ## Set file user and grup
