@@ -1,6 +1,6 @@
 What is RecPermissions
 ======================
-It's a script to change permissions and owner recursivily from current directory. It can delete empty directories when necessary.
+It's a script to change Linux permissions and ownership in one step. It can delete empty directories when necessary.
 
 Usage
 =====
