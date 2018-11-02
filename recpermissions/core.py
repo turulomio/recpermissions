@@ -85,7 +85,7 @@ def set_file_ownership(path, user, group):
 ## You can call with main(['--pretend']). It's equivalento to os.system('recpermissions --pretend')
 ## @param arguments is an array with parser arguments. For example: ['--max_files_to_store','9']. 
 def main(arguments=None):
-    parser=argparse.ArgumentParser(prog='recpermissions', description=_('Search date and time patterns to delete innecesary files or directories'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(__versiondate__.year)), formatter_class=argparse.RawTextHelpFormatter)
+    parser=argparse.ArgumentParser(prog='recpermissions', description=_('Change Linux permissions and ownership in one step. It can delete empty directories when necessary.'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(__versiondate__.year)), formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument('--version', action='version', version=__version__)
 
     parser.add_argument('--user', help=_("File owner will be changed to this parameter. It does nothing if it's not set."), action="store", default=None)
