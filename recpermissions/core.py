@@ -16,7 +16,6 @@ try:
     t=gettext.translation('recpermissions',pkg_resources.resource_filename("recpermissions","locale"))
     _=t.gettext
 except:
-    print("ERROR")
     _=str
 
 ## Returns a localized int
@@ -56,7 +55,6 @@ def set_octal_string_permissions(path, octal):
         except:
             return False
 
-
 ## Gets user and root from a path
 ## @param path String with the path. Can be a dir or a file
 ## @return a tuple (root, root), for example. If uid of the file isn't in /etc/passwd, returns uid and gid
@@ -65,7 +63,6 @@ def get_file_ownership(path):
         return (pwd.getpwuid(os.stat(path).st_uid).pw_name, grp.getgrgid(os.stat(path).st_gid).gr_name)
     except:
         return (os.stat(path).st_uid, os.stat(path).st_gid)
-
 
 ## Set file user and grup
 ## @param path String with the path. Can be a dir or a file
@@ -87,8 +84,6 @@ def set_file_ownership(path, user, group):
         except:
             return False
 
-
-
 ## recpermissions main script
 ## If arguments is None, launches with sys.argc parameters. Entry point is recpermissions:main
 ## You can call with main(['--pretend']). It's equivalento to os.system('recpermissions --pretend')
@@ -102,6 +97,7 @@ def main(arguments=None):
     parser.add_argument('--files', help=_("File permissions to set in all files. It does nothing if it's not set."), default=None, metavar='PERM')
     parser.add_argument('--directories', help=_("Directory permissions to set in all directories. It does nothing if it's not set."), default=None, metavar='PERM')
     parser.add_argument('--remove_emptydirs', help=_("If it's established, removes empty directories recursivily from current path."), action="store_true", default=False)
+    parser.add_argument('--only', help=_("Only changes permissions to the file or directory passed in absolute_path parameter."), action="store_true", default=False)
     parser.add_argument('absolute_path', help=_("Directory who is going to be changed permissions and owner recursivily"), action="store")
 
     args=parser.parse_args(arguments)
@@ -119,47 +115,56 @@ def main(arguments=None):
         sys.exit(1)
 
     deleted_dirs=[]
-    found_files=0
-    found_dirs=0
+    files=[]
+    dirs=[]
     changed_dirs=[]
     changed_files=[]
     error_files=[]
 
-    for (dirpath, dirnames, filenames) in os.walk(args.absolute_path):
-        for d in dirnames:
-            found_dirs=found_dirs+1
-            dirname= os.path.join(dirpath, d)
+    #Generate list of files and directories
+    if args.only==False:
+        for (dirpath, dirnames, filenames) in os.walk(args.absolute_path):
+            for d in dirnames:
+                dirs.append(os.path.join(dirpath, d))
 
-            if os.path.exists(dirname)==False:
-                error_files.append(dirname)
-                continue
-            b_permissions=set_octal_string_permissions(dirname,args.directories)
-            b_ownership=set_file_ownership(dirname, args.user, args.group)
+            for f in filenames:
+                files.append(os.path.join(dirpath, f))
+    else:
+        if os.path.isdir(args.absolute_path):
+            dirs.append(args.absolute_path)
+        else:
+            files.append(args.absolute_path)
 
-            if b_permissions==True or b_ownership==True:
-                changed_dirs.append(dirname)
+    #Iterate list of dirs
+    for dirname in dirs:
+        if os.path.exists(dirname)==False:
+            error_files.append(dirname)
+            continue
 
-            if args.remove_emptydirs==True:
-                if is_dir_empty(dirname):
-                    os.rmdir(dirname)
-                    deleted_dirs.append(dirname)
+        b_permissions=set_octal_string_permissions(dirname,args.directories)
+        b_ownership=set_file_ownership(dirname, args.user, args.group)
+        if b_permissions==True or b_ownership==True:
+            changed_dirs.append(dirname)
 
-        for f in filenames:
-            found_files=found_files+1
-            filename= os.path.join(dirpath, f)
+        if args.remove_emptydirs==True:
+            if is_dir_empty(dirname):
+                os.rmdir(dirname)
+                deleted_dirs.append(dirname)
 
-            if os.path.exists(filename)==False:
-                error_files.append(filename)
-                continue
+    #Iterate list of files
+    for filename in files:
+        if os.path.exists(filename)==False:
+            error_files.append(filename)
+            continue
 
-            b_permissions=set_octal_string_permissions(filename, args.files)
-            b_ownership=set_file_ownership(filename, args.user, args.group)
-            if b_permissions or b_ownership==True:
-                changed_files.append(dirname)
+        b_permissions=set_octal_string_permissions(filename, args.files)
+        b_ownership=set_file_ownership(filename, args.user, args.group)
+        if b_permissions or b_ownership==True:
+            changed_files.append(dirname)
 
     print(Style.BRIGHT + _("RecPermissions summary:"))
-    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories found: ") + Fore.YELLOW + localized_int(found_dirs))
-    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Files found: ") + Fore.YELLOW + localized_int(found_files))
+    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories found: ") + Fore.YELLOW + localized_int(len(dirs)))
+    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Files found: ") + Fore.YELLOW + localized_int(len(files)))
     print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories changed: ") + Fore.YELLOW + localized_int(len(changed_dirs)))
     print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Files changed: ") + Fore.YELLOW + localized_int(len(changed_files)))
     print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories deleted: ") + Fore.YELLOW + localized_int(len(deleted_dirs)))
