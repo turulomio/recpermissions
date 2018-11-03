@@ -1,20 +1,29 @@
 import argparse
-from colorama import Fore, Style, init as colorama_init
-from recpermissions.version import __versiondate__, __version__
-from stat import ST_MODE
 import gettext
 import grp
+import locale
 import os
+import pkg_resources
 import pwd
 import shutil
 import sys
+
+from colorama import Fore, Style, init as colorama_init
+from recpermissions.version import __versiondate__, __version__
+from stat import ST_MODE
 
 try:
     t=gettext.translation('recpermissions',pkg_resources.resource_filename("recpermissions","locale"))
     _=t.gettext
 except:
+    print("ERROR")
     _=str
 
+## Returns a localized int
+## @param value Integer to localize
+## @return string
+def localized_int(value):
+    return locale.format_string("%d", value, True)
 
 ## Check if a directory is empty
 ## @param dir String with the directory to check
@@ -99,6 +108,12 @@ def main(arguments=None):
 
     colorama_init(autoreset=True)
 
+    # Sets locale to get integer format localized strings
+    try:
+        locale.setlocale(locale.LC_ALL, ".".join(locale.getlocale()))
+    except:
+        pass
+
     if os.path.isabs(args.absolute_path)==False:
         print(Fore.RED + Style.BRIGHT + _("Path parameter must be an absolute one") + Style.RESET_ALL)
         sys.exit(1)
@@ -143,12 +158,12 @@ def main(arguments=None):
                 changed_files.append(dirname)
 
     print(Style.BRIGHT + _("RecPermissions summary:"))
-    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories found: ") + Fore.YELLOW + str(found_dirs))
-    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Files found: ") + Fore.YELLOW + str(found_files))
-    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories changed: ") + Fore.YELLOW + str(len(changed_dirs)))
-    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Files changed: ") + Fore.YELLOW + str(len(changed_files)))
-    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories deleted: ") + Fore.YELLOW + str(len(deleted_dirs)))
+    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories found: ") + Fore.YELLOW + localized_int(found_dirs))
+    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Files found: ") + Fore.YELLOW + localized_int(found_files))
+    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories changed: ") + Fore.YELLOW + localized_int(len(changed_dirs)))
+    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Files changed: ") + Fore.YELLOW + localized_int(len(changed_files)))
+    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories deleted: ") + Fore.YELLOW + localized_int(len(deleted_dirs)))
     if len(error_files)>0:
-        print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET +  _("{} error files:").format(Fore.RED + str(len(error_files))+ Fore.RESET))
+        print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET +  _("{} error files:").format(Fore.RED + localized_int(len(error_files))+ Fore.RESET))
         for e in error_files:
             print(Style.BRIGHT + Fore.RED + "     + " + Style.RESET_ALL + e)
