@@ -122,3 +122,19 @@ recpermissions \-\-user root \-\-group root \-\-files 640 \-\-directories 750 \-
 Este comando cambiar\('a el usuario a 'root' y el grupo a 'root'. Los ficheros tendr\('an los permisos rw\-r\-\-\-\-\- y los directorios los permisos rwxr\-x\-\-\-. Si el script encontrara directorios vacios los borrar\('a:
 .RE
 .RE
+.PP
+.RS
+.B Only Example
+.RE
+.PP
+.RS
+.RS
+recpermissions \-\-user user /home/user/README.txt \-\-only
+.RE
+.RE
+.PP
+.RS
+.RS
+This command will change user ownership to the file /home/usr/README.txt only
+.RE
+.RE

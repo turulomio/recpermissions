@@ -43,6 +43,13 @@ Dependencies
 
 Changelog
 =========
+1.3.0
+  * If file owner isn't in /etc/passwd now remains its uid, and desn't crash
+  * Code of conduct is added to the project
+  * Added localized integers in summary
+  * Added files to french translation
+  * Added --only parameter funcionality to allow change ownership and permissions of one file or directory
+
 1.2.0
   * Due to a boolean logic error, some changes didn't took place
 

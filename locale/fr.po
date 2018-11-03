@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecPermissions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-03 07:09+0100\n"
+"POT-Creation-Date: 2018-11-03 08:24+0100\n"
 "PO-Revision-Date: 2018-11-03 07:11+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: French\n"
@@ -89,56 +89,52 @@ msgstr ""
 msgid "recpermissions --user user --files 644 /home/user/"
 msgstr ""
 
-msgid ""
-"This command only changes user permissions and files permissions to 644. "
-"Group and directory permissions are not changed:"
+msgid "This command only changes user permissions and files permissions to 644. Group and directory permissions are not changed:"
 msgstr ""
 
 msgid "Full Example"
 msgstr ""
 
-msgid ""
-"recpermissions --user root --group root --files 640 --directories 750 --"
-"remove_emptydirs /home/user/"
+msgid "recpermissions --user root --group root --files 640 --directories 750 --remove_emptydirs /home/user/"
 msgstr ""
 
-msgid ""
-"This command will change user and group to root user and group. Files will "
-"have rw-r----- permisions and directories rwxr-x--- permisions. If the "
-"script finds empty dirs it will remove them:"
+msgid "This command will change user and group to root user and group. Files will have rw-r----- permisions and directories rwxr-x--- permisions. If the script finds empty dirs it will remove them:"
+msgstr ""
+
+msgid "Only Example"
+msgstr ""
+
+msgid "recpermissions --user user /home/user/README.txt --only"
+msgstr ""
+
+msgid "This command will change user ownership to the file /home/usr/README.txt only"
 msgstr ""
 
 msgid "You need ttyrecgenerator installed to generate videos"
 msgstr ""
 
-msgid ""
-"Change Linux permissions and ownership in one step. It can delete empty "
-"directories when necessary."
+msgid "Change Linux permissions and ownership in one step. It can delete empty directories when necessary."
 msgstr ""
 
 msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr ""
 
-msgid ""
-"File owner will be changed to this parameter. It does nothing if it's not "
-"set."
+msgid "File owner will be changed to this parameter. It does nothing if it's not set."
 msgstr ""
 
-msgid ""
-"File owner group will be changed to this parameter. It does nothing if it's "
-"not set."
+msgid "File owner group will be changed to this parameter. It does nothing if it's not set."
 msgstr ""
 
 msgid "File permissions to set in all files. It does nothing if it's not set."
 msgstr ""
 
-msgid ""
-"Directory permissions to set in all directories. It does nothing if it's not "
-"set."
+msgid "Directory permissions to set in all directories. It does nothing if it's not set."
 msgstr ""
 
-msgid ""
-"If it's established, removes empty directories recursivily from current path."
+msgid "If it's established, removes empty directories recursivily from current path."
+msgstr ""
+
+msgid "Only changes permissions to the file or directory passed in absolute_path parameter."
 msgstr ""
 
 msgid "Directory who is going to be changed permissions and owner recursivily"
@@ -174,9 +170,7 @@ msgstr ""
 msgid "We list files with permissions and owners"
 msgstr ""
 
-msgid ""
-"We want to change them to root:root owner. Files to 640 permissions, "
-"directories to 750. We want to remove empty directories too, so we use:"
+msgid "We want to change them to root:root owner. Files to 640 permissions, directories to 750. We want to remove empty directories too, so we use:"
 msgstr ""
 
 msgid "We check the result"

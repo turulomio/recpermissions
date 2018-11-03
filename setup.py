@@ -138,6 +138,9 @@ class Doc(Command):
         man.paragraph(_("Full Example"), 2, True)
         man.paragraph(_("recpermissions --user root --group root --files 640 --directories 750 --remove_emptydirs /home/user/"), 3)
         man.paragraph(_("This command will change user and group to root user and group. Files will have rw-r----- permisions and directories rwxr-x--- permisions. If the script finds empty dirs it will remove them:"), 3)
+        man.paragraph(_("Only Example"), 2, True)
+        man.paragraph(_("recpermissions --user user /home/user/README.txt --only"), 3)
+        man.paragraph(_("This command will change user ownership to the file /home/usr/README.txt only"),  3)
         man.save()
 
 class Video(Command):
