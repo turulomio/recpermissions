@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TooManyFiles\n"
+"Project-Id-Version: RecPermissions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-01 20:36+0100\n"
+"POT-Creation-Date: 2018-11-03 07:09+0100\n"
 "PO-Revision-Date: 2018-10-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -105,8 +105,8 @@ msgstr "Este comando cambiará el usuario a 'root' y el grupo a 'root'. Los fich
 msgid "You need ttyrecgenerator installed to generate videos"
 msgstr "Necesitas instalar 'ttyrecgenerator' para generar videos"
 
-msgid "Search date and time patterns to delete innecesary files or directories"
-msgstr "Busca patrónes de fecha y hora para borrar ficheros o directorios innecesarios"
+msgid "Change Linux permissions and ownership in one step. It can delete empty directories when necessary."
+msgstr ""
 
 msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr "Desarrollado por Mariano Muñoz 2018-{}"
@@ -167,6 +167,9 @@ msgstr "Comprobamos el resultado"
 
 msgid "That's all"
 msgstr "Eso es todo"
+
+#~ msgid "Search date and time patterns to delete innecesary files or directories"
+#~ msgstr "Busca patrónes de fecha y hora para borrar ficheros o directorios innecesarios"
 
 #~ msgid "Basic Example"
 #~ msgstr "Ejemplo básico"

@@ -91,9 +91,11 @@ class Doc(Command):
         #es
         os.system("xgettext -L Python --no-wrap --no-location --from-code='UTF-8' -o locale/recpermissions.pot *.py recpermissions/*.py doc/ttyrec/*.py")
         os.system("msgmerge -N --no-wrap -U locale/es.po locale/recpermissions.pot")
+        os.system("msgmerge -N --no-wrap -U locale/fr.po locale/recpermissions.pot")
         os.system("msgfmt -cv -o recpermissions/locale/es/LC_MESSAGES/recpermissions.mo locale/es.po")
+        os.system("msgfmt -cv -o recpermissions/locale/fr/LC_MESSAGES/recpermissions.mo locale/fr.po")
 
-        for language in ["en", "es"]:
+        for language in ["en", "es", "fr"]:
             self.mangenerator(language)
 
     def mangenerator(self, language):
@@ -105,7 +107,7 @@ class Doc(Command):
         else:
             lang1=gettext.translation('recpermissions', 'recpermissions/locale', languages=[language])
             lang1.install()
-            man=Man("man/es/man1/recpermissions")
+            man=Man("man/{}/man1/recpermissions".format(language))
         print("  - DESCRIPTION in {} is {}".format(language, _("DESCRIPTION")))
 
         man.setMetadata("RecPermissions",  1,   datetime.date.today(), "Mariano Muñoz", _("Change files and directories owner and permissions recursively."))
