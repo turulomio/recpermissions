@@ -1,6 +1,4 @@
 from setuptools import setup, Command
-from mangenerator import Man
-
 import datetime
 import gettext
 import os
@@ -102,6 +100,7 @@ class Doc(Command):
         """
             Create man pages for parameter language
         """
+        from mangenerator import Man
         if language=="en":
             man=Man("man/man1/recpermissions")
         else:
@@ -113,6 +112,7 @@ class Doc(Command):
         man.setMetadata("RecPermissions",  1,   datetime.date.today(), "Mariano Muñoz", _("Change files and directories owner and permissions recursively."))
         man.setSynopsis("""usage: recpermissions [-h] [--version] [--user USER] [--group GROUP]
                       [--files PERM] [--directories PERM] [--remove_emptydirs]
+                      [--only]
                       absolute_path""")
         man.header(_("DESCRIPTION"), 1)
         man.paragraph(_("This app has the following mandatory parameters:"), 1)
@@ -125,7 +125,9 @@ class Doc(Command):
         man.paragraph("--directories", 2, True)
         man.paragraph(_("Directory permissions in octal to be used.") + " " + _("It does nothing if it's not set"), 3)
         man.paragraph("--remove_emptydirs", 2, True)
-        man.paragraph(_("When used in script, removes all empty dirs recursively from path."), 3)  
+        man.paragraph(_("When used in script, removes all empty dirs recursively from path."), 3)
+        man.paragraph("--only", 2, True)
+        man.paragraph(_("Only changes permissions to the file or directory passed in absolute_path parameter."), 3)
         man.paragraph("absolute_path", 2, True)
         man.paragraph(_("To avoid errors and wrong changes, path must be an absolute one."), 3)  
         man.header(_("EXAMPLES"), 1)

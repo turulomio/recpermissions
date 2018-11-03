@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecPermissions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-03 08:24+0100\n"
+"POT-Creation-Date: 2018-11-03 08:34+0100\n"
 "PO-Revision-Date: 2018-10-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -68,6 +68,9 @@ msgstr "Permisos del directorio en octal a usar"
 
 msgid "When used in script, removes all empty dirs recursively from path."
 msgstr "Cuando se usa en el script, borra todos los directorios vacios rescursivamente desde la ruta"
+
+msgid "Only changes permissions to the file or directory passed in absolute_path parameter."
+msgstr "Solo cambia los permisos del fichero o directorio pasado en el parámetro absolute_path."
 
 msgid "To avoid errors and wrong changes, path must be an absolute one."
 msgstr "Para evitar errores y cambios erróneos, la ruta pasada debe ser absoluta"
@@ -134,9 +137,6 @@ msgstr "Permisos del directorio a establecer en todos los directorios. No hace n
 
 msgid "If it's established, removes empty directories recursivily from current path."
 msgstr "Si se establece, borra todos los directorios vacios recursivamente desde la ruta actual."
-
-msgid "Only changes permissions to the file or directory passed in absolute_path parameter."
-msgstr "Solo cambia los permisos del fichero o directorio pasado en el parámetro absolute_path."
 
 msgid "Directory who is going to be changed permissions and owner recursivily"
 msgstr "Directorio desde el que se van a cambiar permisos y propietario de forma recursiva"

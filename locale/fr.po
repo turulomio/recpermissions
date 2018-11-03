@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecPermissions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-03 08:24+0100\n"
+"POT-Creation-Date: 2018-11-03 08:34+0100\n"
 "PO-Revision-Date: 2018-11-03 07:11+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: French\n"
@@ -66,6 +66,9 @@ msgid "Directory permissions in octal to be used."
 msgstr ""
 
 msgid "When used in script, removes all empty dirs recursively from path."
+msgstr ""
+
+msgid "Only changes permissions to the file or directory passed in absolute_path parameter."
 msgstr ""
 
 msgid "To avoid errors and wrong changes, path must be an absolute one."
@@ -132,9 +135,6 @@ msgid "Directory permissions to set in all directories. It does nothing if it's 
 msgstr ""
 
 msgid "If it's established, removes empty directories recursivily from current path."
-msgstr ""
-
-msgid "Only changes permissions to the file or directory passed in absolute_path parameter."
 msgstr ""
 
 msgid "Directory who is going to be changed permissions and owner recursivily"
