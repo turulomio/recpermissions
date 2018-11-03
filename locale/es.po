@@ -130,10 +130,10 @@ msgid "Directory who is going to be changed permissions and owner recursivily"
 msgstr "Directorio desde el que se van a cambiar permisos y propietario de forma recursiva"
 
 msgid "Path parameter must be an absolute one"
-msgstr "El parámetro de la ruta debe ser absoluta"
+msgstr "El parámetro debe ser una ruta absoluta"
 
 msgid "RecPermissions summary:"
-msgstr "Resumen de RecPermissions"
+msgstr "Resumen de RecPermissions:"
 
 msgid "Directories found: "
 msgstr "Directorios encontrados: "
