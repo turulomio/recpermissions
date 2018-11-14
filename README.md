@@ -2,6 +2,8 @@ What is RecPermissions
 ======================
 It's a script to change Linux permissions and ownership in one step. It can delete empty directories when necessary.
 
+This script doesn't work on Windows.
+
 Usage
 =====
 
@@ -43,6 +45,10 @@ Dependencies
 
 Changelog
 =========
+1.4.0
+  * Improved man pages
+  * If recpermissions is executed on Windows, just exists script, instead of crash.
+
 1.3.0
   * If file owner isn't in /etc/passwd now remains its uid, and desn't crash
   * Code of conduct is added to the project

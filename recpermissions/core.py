@@ -109,8 +109,6 @@ def main(arguments=None):
     args=parser.parse_args(arguments)
 
     colorama_init(autoreset=True)
-    
-    if platform.system()
 
     # Sets locale to get integer format localized strings
     try:
