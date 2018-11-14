@@ -48,6 +48,7 @@ Changelog
 1.4.0
   * Improved man pages
   * If recpermissions is executed on Windows, just exists script, instead of crash.
+  * mangenerator is not needed for setup.py main script
 
 1.3.0
   * If file owner isn't in /etc/passwd now remains its uid, and desn't crash
