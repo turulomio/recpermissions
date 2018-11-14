@@ -1,3 +1,10 @@
+import platform
+import sys
+
+if platform.system()=="Windows":
+    print("This script only works on Linux")
+    sys.exit(0)
+
 import argparse
 import gettext
 import grp
@@ -6,7 +13,6 @@ import os
 import pkg_resources
 import pwd
 import shutil
-import sys
 
 from colorama import Fore, Style, init as colorama_init
 from recpermissions.version import __versiondate__, __version__
@@ -103,6 +109,8 @@ def main(arguments=None):
     args=parser.parse_args(arguments)
 
     colorama_init(autoreset=True)
+    
+    if platform.system()
 
     # Sets locale to get integer format localized strings
     try:

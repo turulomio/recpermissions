@@ -5,7 +5,6 @@ import os
 import platform
 import site
 
-
 gettext.install('recpermissions', 'recpermissions/locale')
 
 class Doxygen(Command):
