@@ -45,6 +45,9 @@ Dependencies
 
 Changelog
 =========
+1.5.0
+  * Added frech translation
+
 1.4.0
   * Improved man pages
   * If recpermissions is executed on Windows, just exists script, instead of crash.
