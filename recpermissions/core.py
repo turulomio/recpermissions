@@ -129,10 +129,10 @@ def main(arguments=None):
 
     #Generate list of files and directories
     if args.only==False:
+        dirs.append(args.absolute_path)
         for (dirpath, dirnames, filenames) in os.walk(args.absolute_path):
             for d in dirnames:
                 dirs.append(os.path.join(dirpath, d))
-
             for f in filenames:
                 files.append(os.path.join(dirpath, f))
     else:
