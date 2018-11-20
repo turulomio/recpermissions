@@ -1,3 +1,5 @@
+## @namespace recpermissions.core
+## @brief Core functions of the package
 import platform
 import sys
 
@@ -61,6 +63,14 @@ def set_octal_string_permissions(path, octal):
         except:
             return False
 
+## Returns if the octal string has valid octal permissions
+## @param octal String with octal permissions. "644" or "755" for example
+## @return Boolean if the octal string is valid
+def is_octal_string_permissions_valid(octal):
+    if len(octal)==3 and octal.isdigit()==True and octal.find("9")==-1:
+         return True
+    return False
+
 ## Gets user and root from a path
 ## @param path String with the path. Can be a dir or a file
 ## @return a tuple (root, root), for example. If uid of the file isn't in /etc/passwd, returns uid and gid
@@ -118,6 +128,10 @@ def main(arguments=None):
 
     if os.path.isabs(args.absolute_path)==False:
         print(Fore.RED + Style.BRIGHT + _("Path parameter must be an absolute one") + Style.RESET_ALL)
+        sys.exit(1)
+
+    if not (is_octal_string_permissions_valid(args.files) and is_octal_string_permissions_valid(args.directories)):
+        print(Fore.RED + Style.BRIGHT + _("Seems you gave a bad octal string in --files and --directories parameters. Use format 644 or 766 for example."))
         sys.exit(1)
 
     deleted_dirs=[]
