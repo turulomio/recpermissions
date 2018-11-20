@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecPermissions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-03 08:34+0100\n"
+"POT-Creation-Date: 2018-11-20 06:47+0100\n"
 "PO-Revision-Date: 2018-10-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -144,6 +144,9 @@ msgstr "Directorio desde el que se van a cambiar permisos y propietario de forma
 msgid "Path parameter must be an absolute one"
 msgstr "El parámetro debe ser una ruta absoluta"
 
+msgid "Seems you gave a bad octal string in --files or --directories parameters. Use format 644 or 755 for example."
+msgstr "Parece que has dado una cadena octal errónea en el parámetro --files o --directories. Usa el formato 644 o 755 por ejemplo."
+
 msgid "RecPermissions summary:"
 msgstr "Resumen de RecPermissions:"
 
@@ -179,6 +182,9 @@ msgstr "Comprobamos el resultado"
 
 msgid "That's all"
 msgstr "Eso es todo"
+
+#~ msgid "Seems you gave a bad octal string in --files and --directories parameters. Use format 644 or 766 for example."
+#~ msgstr "Parece que has dado una cadena octal errónea en el parámetro --files o --directories. Usa el formato 644 o 755 por ejemplo."
 
 #~ msgid "Search date and time patterns to delete innecesary files or directories"
 #~ msgstr "Busca patrónes de fecha y hora para borrar ficheros o directorios innecesarios"

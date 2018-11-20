@@ -45,15 +45,23 @@ Dependencies
 
 Changelog
 =========
+1.6.0
+-----
+  * Octal permissions string is now validated in --files and --directories
+  * #15 Absoute path directory given as a paramater changes its permissios too
+
 1.5.0
+-----
   * Added frech translation
 
 1.4.0
+-----
   * Improved man pages
   * If recpermissions is executed on Windows, just exists script, instead of crash.
   * mangenerator is not needed for setup.py main script
 
 1.3.0
+-----
   * If file owner isn't in /etc/passwd now remains its uid, and desn't crash
   * Code of conduct is added to the project
   * Added localized integers in summary
@@ -61,26 +69,33 @@ Changelog
   * Added --only parameter funcionality to allow change ownership and permissions of one file or directory
 
 1.2.0
+-----
   * Due to a boolean logic error, some changes didn't took place
 
 1.1.0
+-----
   * Added 30 seconds to reload video in howto.py
   * Nothing is changed if --user --group --files or --directories is not set.
 
 1.0.0
+-----
   * Version fully operational
   * Added howto video in English and Spanish
   * Man pages and spanish translation have been improved
   * Added summary and added io error exception catching
 
 0.2.1
+-----
   * Solved critical bug. Directory now is set tu absolut_path parameter
 
 0.2.0
+-----
   * Added absolute path parameter to avoid errors and wrong changes
 
 0.1.1
+-----
   * Solved bug in current path directory
 
 0.1.0
+-----
   * Creating infrastructure

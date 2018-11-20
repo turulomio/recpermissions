@@ -131,7 +131,7 @@ def main(arguments=None):
         sys.exit(1)
 
     if not (is_octal_string_permissions_valid(args.files) and is_octal_string_permissions_valid(args.directories)):
-        print(Fore.RED + Style.BRIGHT + _("Seems you gave a bad octal string in --files and --directories parameters. Use format 644 or 766 for example."))
+        print(Fore.RED + Style.BRIGHT + _("Seems you gave a bad octal string in --files or --directories parameters. Use format 644 or 755 for example."))
         sys.exit(1)
 
     deleted_dirs=[]

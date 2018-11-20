@@ -48,7 +48,7 @@ class Procedure(Command):
         print("  * python setup.py doxygen")
         print("  * mcedit doc/ttyrec/howto.py")
         print("  * python setup.py video" + ". " + _("If changed restart from first python setup.py doc"))
-        print("  * git commit -a -m 'Comment'")
+        print("  * git commit -a -m 'recpermissions-X.X.X'")
         print("  * git push")
         print(_("  * Make a new tag in github"))
         print("  * python setup.py sdist upload -r pypi")
@@ -101,6 +101,7 @@ class Doc(Command):
         """
         from mangenerator import Man
         if language=="en":
+            lang1=gettext.install('recpermissions', 'badlocale')
             man=Man("man/man1/recpermissions")
         else:
             lang1=gettext.translation('recpermissions', 'recpermissions/locale', languages=[language])
@@ -188,11 +189,11 @@ setup(name='recpermissions',
     long_description=long_description,
     long_description_content_type='text/markdown',
     classifiers=['Development Status :: 4 - Beta',
-              'Intended Audience :: Developers',
-              'Topic :: Software Development :: Build Tools',
-              'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
-              'Programming Language :: Python :: 3',
-             ], 
+                 'Intended Audience :: System Administrators',
+                 'Topic :: System :: Systems Administration',
+                 'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+                 'Programming Language :: Python :: 3',
+                ],
     keywords='change permissions ownner files directories',
     url='https://github.com/Turulomio/recpermissions',
     author='Turulomio',

@@ -1,18 +1,18 @@
-.TH RECPERMISSIONS 1 2018\-11\-15
+.TH RECPERMISSIONS 1 2018\-11\-20
 .SH NAME
 
 .B RecPermissions:
-Cambia el propietario y los permisos de ficheros y directorios recursivamente.
+Change files and directories owner and permissions recursively.
 .SH SYNOPSIS
 
 RecPermissions usage: recpermissions [\-h] [\-\-version] [\-\-user USER] [\-\-group GROUP]
                       [\-\-files PERM] [\-\-directories PERM] [\-\-remove_emptydirs]
                       [\-\-only]
                       absolute_path
-.SH DESCRIPCI\('ON
+.SH DESCRIPTION
 
 .PP
-Esta aplicaci\('on tiene los siguientes par\('ametros obligatorios
+This app has the following mandatory parameters:
 .PP
 .RS
 .B \-\-user
@@ -20,7 +20,7 @@ Esta aplicaci\('on tiene los siguientes par\('ametros obligatorios
 .PP
 .RS
 .RS
-Usuario usado para cambiar el propietario de los ficheros No hace nada si no se ha establecido
+User used to change files owner. It does nothing if it's not set
 .RE
 .RE
 .PP
@@ -30,7 +30,7 @@ Usuario usado para cambiar el propietario de los ficheros No hace nada si no se 
 .PP
 .RS
 .RS
-Grupo usado para cambiar el grupo del propietario del fichero No hace nada si no se ha establecido
+Group used to change files owner group. It does nothing if it's not set
 .RE
 .RE
 .PP
@@ -40,7 +40,7 @@ Grupo usado para cambiar el grupo del propietario del fichero No hace nada si no
 .PP
 .RS
 .RS
-Permisos del fichero en octal a usar No hace nada si no se ha establecido
+File permissions in octal to be used. It does nothing if it's not set
 .RE
 .RE
 .PP
@@ -50,7 +50,7 @@ Permisos del fichero en octal a usar No hace nada si no se ha establecido
 .PP
 .RS
 .RS
-Permisos del directorio en octal a usar No hace nada si no se ha establecido
+Directory permissions in octal to be used. It does nothing if it's not set
 .RE
 .RE
 .PP
@@ -60,7 +60,7 @@ Permisos del directorio en octal a usar No hace nada si no se ha establecido
 .PP
 .RS
 .RS
-Cuando se usa en el script, borra todos los directorios vacios rescursivamente desde la ruta
+When used in script, removes all empty dirs recursively from path.
 .RE
 .RE
 .PP
@@ -70,7 +70,7 @@ Cuando se usa en el script, borra todos los directorios vacios rescursivamente d
 .PP
 .RS
 .RS
-Solo cambia los permisos del fichero o directorio pasado en el par\('ametro absolute_path.
+Only changes permissions to the file or directory passed in absolute_path parameter.
 .RE
 .RE
 .PP
@@ -80,30 +80,30 @@ Solo cambia los permisos del fichero o directorio pasado en el par\('ametro abso
 .PP
 .RS
 .RS
-Para evitar errores y cambios err\('oneos, la ruta pasada debe ser absoluta
+To avoid errors and wrong changes, path must be an absolute one.
 .RE
 .RE
-.SH EJEMPLOS
+.SH EXAMPLES
 
 .PP
 .RS
-.B Ejemplo nulo
+.B Null Example
 .RE
 .PP
 .RS
 .RS
-recpermissions /home/user
+recpermissions /home/user/
 .RE
 .RE
 .PP
 .RS
 .RS
-Este comando no hace nada
+This comand does nothing
 .RE
 .RE
 .PP
 .RS
-.B Ejemplo parcial
+.B Partial Example
 .RE
 .PP
 .RS
@@ -114,12 +114,12 @@ recpermissions \-\-user user \-\-files 644 /home/user/
 .PP
 .RS
 .RS
-Este comando solo cambia el usuario y los permisos del fichero a 644. El grupo y los permisos de los directorios no son cambiados:
+This command only changes user permissions and files permissions to 644. Group and directory permissions are not changed:
 .RE
 .RE
 .PP
 .RS
-.B Ejemplo completo
+.B Full Example
 .RE
 .PP
 .RS
@@ -130,12 +130,12 @@ recpermissions \-\-user root \-\-group root \-\-files 640 \-\-directories 750 \-
 .PP
 .RS
 .RS
-Este comando cambiar\('a el usuario a 'root' y el grupo a 'root'. Los ficheros tendr\('an los permisos rw\-r\-\-\-\-\- y los directorios los permisos rwxr\-x\-\-\-. Si el script encontrara directorios vacios los borrar\('a:
+This command will change user and group to root user and group. Files will have rw\-r\-\-\-\-\- permisions and directories rwxr\-x\-\-\- permisions. If the script finds empty dirs it will remove them:
 .RE
 .RE
 .PP
 .RS
-.B Ejemplo Only
+.B Only Example
 .RE
 .PP
 .RS
@@ -146,6 +146,6 @@ recpermissions \-\-user user /home/user/README.txt \-\-only
 .PP
 .RS
 .RS
-Este comando cambiar\('a \('unicamente el propietario del fichero /home/usr/README.txt
+This command will change user ownership to the file /home/usr/README.txt only
 .RE
 .RE

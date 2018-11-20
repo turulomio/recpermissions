@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-15 18:06+0100\n"
+"POT-Creation-Date: 2018-11-20 06:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -141,6 +141,9 @@ msgid "Directory who is going to be changed permissions and owner recursivily"
 msgstr ""
 
 msgid "Path parameter must be an absolute one"
+msgstr ""
+
+msgid "Seems you gave a bad octal string in --files or --directories parameters. Use format 644 or 755 for example."
 msgstr ""
 
 msgid "RecPermissions summary:"

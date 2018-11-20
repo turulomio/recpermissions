@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecPermissions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-03 08:34+0100\n"
+"POT-Creation-Date: 2018-11-20 06:47+0100\n"
 "PO-Revision-Date: 2018-11-03 07:11+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: French\n"
@@ -142,6 +142,9 @@ msgstr "Répertoire dont on va changer les permissions et le propriétaire récu
 
 msgid "Path parameter must be an absolute one"
 msgstr "Le paramètre de path doit être absolu"
+
+msgid "Seems you gave a bad octal string in --files or --directories parameters. Use format 644 or 755 for example."
+msgstr ""
 
 msgid "RecPermissions summary:"
 msgstr "Résumé de RecPermissions :"
