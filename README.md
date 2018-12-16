@@ -1,5 +1,5 @@
-What is RecPermissions
-======================
+What is RecPermissions?
+=======================
 It's a script to change Linux permissions and ownership in one step. It can delete empty directories when necessary.
 
 This script doesn't work on Windows.
@@ -15,28 +15,17 @@ Once installed, you can see man documentation with
 
 `man recpermissions`
 
-License
-=======
-GPL-3
-
 Links
 =====
-
-Source code & Development:
-    https://github.com/Turulomio/recpermissions
 
 Doxygen documentation:
     http://turulomio.users.sourceforge.net/doxygen/recpermissions/
 
-Main developer web page:
-    http://turulomio.users.sourceforge.net/en/proyectos.html
-    
 Pypi web page:
     https://pypi.org/project/recpermissions/
 
 Gentoo ebuild
-    You can find a Gentoo ebuild in https://sourceforge.net/p/xulpymoney/code/HEAD/tree/myportage/app-admin/recpermissions/
-
+    If you use Gentoo you can find a ebuild in https://github.com/Turulomio/myportage/tree/master/app-admin/recpermissions
 
 Dependencies
 ============
@@ -45,6 +34,10 @@ Dependencies
 
 Changelog
 =========
+1.7.0
+-----
+  * Fixed critical bug with symlinks
+
 1.6.0
 -----
   * Octal permissions string is now validated in --files and --directories

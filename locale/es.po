@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecPermissions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-20 06:47+0100\n"
+"POT-Creation-Date: 2018-12-16 09:49+0100\n"
 "PO-Revision-Date: 2018-10-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -164,6 +164,9 @@ msgstr "Ficheros cambiados: "
 
 msgid "Directories deleted: "
 msgstr "Directorios borrados: "
+
+msgid "Ignored symlinks: "
+msgstr "Enlaces simbólicos ignorados:"
 
 msgid "{} error files:"
 msgstr "{} errores en ficheros:"
