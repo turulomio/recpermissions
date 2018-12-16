@@ -166,7 +166,7 @@ msgid "Directories deleted: "
 msgstr "Directorios borrados: "
 
 msgid "Ignored symlinks: "
-msgstr "Enlaces simbólicos ignorados:"
+msgstr "Enlaces simbólicos ignorados: "
 
 msgid "{} error files:"
 msgstr "{} errores en ficheros:"
