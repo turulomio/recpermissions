@@ -140,6 +140,7 @@ def main(arguments=None):
     changed_dirs=[]
     changed_files=[]
     error_files=[]
+    ignored_symlinks=[]
 
     #Generate list of files and directories
     if args.only==False:
@@ -157,6 +158,9 @@ def main(arguments=None):
 
     #Iterate list of dirs
     for dirname in dirs:
+        if os.path.islink(dirname)==True:
+            ignored_symlinks.append(dirname)
+            continue
         if os.path.exists(dirname)==False:
             error_files.append(dirname)
             continue
@@ -173,6 +177,9 @@ def main(arguments=None):
 
     #Iterate list of files
     for filename in files:
+        if os.path.islink(filename)==True:
+            ignored_symlinks.append(filename)
+            continue
         if os.path.exists(filename)==False:
             error_files.append(filename)
             continue
@@ -188,6 +195,7 @@ def main(arguments=None):
     print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories changed: ") + Fore.YELLOW + localized_int(len(changed_dirs)))
     print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Files changed: ") + Fore.YELLOW + localized_int(len(changed_files)))
     print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories deleted: ") + Fore.YELLOW + localized_int(len(deleted_dirs)))
+    print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Ignored symlinks: ") + Fore.YELLOW + localized_int(len(ignored_symlinks)))
     if len(error_files)>0:
         print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET +  _("{} error files:").format(Fore.RED + localized_int(len(error_files))+ Fore.RESET))
         for e in error_files:
