@@ -1,5 +1,6 @@
 ## @namespace recpermissions.core
 ## @brief Core functions of the package
+import datetime
 import platform
 import sys
 
@@ -105,6 +106,7 @@ def set_file_ownership(path, user, group):
 ## You can call with main(['--pretend']). It's equivalento to os.system('recpermissions --pretend')
 ## @param arguments is an array with parser arguments. For example: ['--max_files_to_store','9']. 
 def main(arguments=None):
+    start=datetime.datetime.now()
     parser=argparse.ArgumentParser(prog='recpermissions', description=_('Change Linux permissions and ownership in one step. It can delete empty directories when necessary.'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(__versiondate__.year)), formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument('--version', action='version', version=__version__)
 
@@ -189,7 +191,7 @@ def main(arguments=None):
         if b_permissions or b_ownership==True:
             changed_files.append(dirname)
 
-    print(Style.BRIGHT + _("RecPermissions summary:"))
+    print(Style.BRIGHT + _("RecPermissions in {} set owner to {}:{}, files to {} and directories to {}.").format(args.absolute_path, args.user, args.group, args.files, args.directories))
     print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories found: ") + Fore.YELLOW + localized_int(len(dirs)))
     print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Files found: ") + Fore.YELLOW + localized_int(len(files)))
     print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories changed: ") + Fore.YELLOW + localized_int(len(changed_dirs)))
@@ -200,3 +202,4 @@ def main(arguments=None):
         print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET +  _("{} error files:").format(Fore.RED + localized_int(len(error_files))+ Fore.RESET))
         for e in error_files:
             print(Style.BRIGHT + Fore.RED + "     + " + Style.RESET_ALL + e)
+    print(Style.BRIGHT + _("Executed at {}, took {}.".format(datetime.datetime.now(),datetime.datetime.now()-start)))
