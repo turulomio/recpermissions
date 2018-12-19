@@ -202,4 +202,4 @@ def main(arguments=None):
         print( Fore.GREEN + "  * " + Fore.RESET +  _("{} error files:").format(Fore.RED + localized_int(len(error_files))+ Fore.RESET))
         for e in error_files:
             print( Fore.RED + "     + " + Style.RESET_ALL + e)
-    print( _("Executed at {}, took {}.".format(Fore.GREEN + str(datetime.datetime.now()) + Fore.RESET, Fore.GREEN + str(datetime.datetime.now()-start) + Fore.RESET)))
+    print( _("Executed at {}, took {}.").format(Fore.GREEN + str(datetime.datetime.now()) + Fore.RESET, Fore.GREEN + str(datetime.datetime.now()-start) + Fore.RESET))

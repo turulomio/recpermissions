@@ -27,6 +27,7 @@ r.comment("# " + _("We check the result"))
 r.command("ls -la")
 r.comment("# " + _("That's all"))
 time.sleep(30)
+r.comment("# ")
 
 #We remove example
 os.system("rm -Rf directory")

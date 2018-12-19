@@ -34,6 +34,10 @@ Dependencies
 
 Changelog
 =========
+1.8.0
+-----
+  * Improved colorized output.
+
 1.7.0
 -----
   * Fixed critical bug with symlinks
