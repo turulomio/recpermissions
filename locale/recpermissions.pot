@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-16 10:00+0100\n"
+"POT-Creation-Date: 2018-12-19 09:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -146,7 +146,7 @@ msgstr ""
 msgid "Seems you gave a bad octal string in --files or --directories parameters. Use format 644 or 755 for example."
 msgstr ""
 
-msgid "RecPermissions summary:"
+msgid "RecPermissions in {} set owner to {}:{}, files to {} and directories to {}."
 msgstr ""
 
 msgid "Directories found: "
@@ -168,6 +168,9 @@ msgid "Ignored symlinks: "
 msgstr ""
 
 msgid "{} error files:"
+msgstr ""
+
+msgid "Executed at {}, took {}."
 msgstr ""
 
 msgid "This is a video to show how to use 'recpermissions' command"

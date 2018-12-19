@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecPermissions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-16 09:49+0100\n"
+"POT-Creation-Date: 2018-12-19 09:55+0100\n"
 "PO-Revision-Date: 2018-10-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -147,8 +147,8 @@ msgstr "El parámetro debe ser una ruta absoluta"
 msgid "Seems you gave a bad octal string in --files or --directories parameters. Use format 644 or 755 for example."
 msgstr "Parece que has dado una cadena octal errónea en el parámetro --files o --directories. Usa el formato 644 o 755 por ejemplo."
 
-msgid "RecPermissions summary:"
-msgstr "Resumen de RecPermissions:"
+msgid "RecPermissions in {} set owner to {}:{}, files to {} and directories to {}."
+msgstr "RecPermissions en {} puso el propietario a {}:{}, los ficheros a {} y los directorios a {}."
 
 msgid "Directories found: "
 msgstr "Directorios encontrados: "
@@ -171,6 +171,9 @@ msgstr "Enlaces simbólicos ignorados: "
 msgid "{} error files:"
 msgstr "{} errores en ficheros:"
 
+msgid "Executed at {}, took {}."
+msgstr "Ejecutado a las {}, tardó {}."
+
 msgid "This is a video to show how to use 'recpermissions' command"
 msgstr "Este video muestra como usar el comando 'recpermissions'"
 
@@ -185,6 +188,9 @@ msgstr "Comprobamos el resultado"
 
 msgid "That's all"
 msgstr "Eso es todo"
+
+#~ msgid "RecPermissions summary:"
+#~ msgstr "Resumen de RecPermissions:"
 
 #~ msgid "Seems you gave a bad octal string in --files and --directories parameters. Use format 644 or 766 for example."
 #~ msgstr "Parece que has dado una cadena octal errónea en el parámetro --files o --directories. Usa el formato 644 o 755 por ejemplo."

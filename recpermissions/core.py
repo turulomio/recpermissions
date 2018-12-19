@@ -191,7 +191,7 @@ def main(arguments=None):
         if b_permissions or b_ownership==True:
             changed_files.append(dirname)
 
-    print(Style.BRIGHT + _("RecPermissions in {} set owner to {}:{}, files to {} and directories to {}.").format(args.absolute_path, args.user, args.group, args.files, args.directories))
+    print(Style.BRIGHT + _("RecPermissions in {} set owner to {}:{}, files to {} and directories to {}.").format(Fore.GREEN + args.absolute_path + Fore.RESET, Fore.GREEN + args.user + Fore.RESET, Fore.GREEN + args.group + Fore.RESET, Fore.GREEN + args.files + Fore.RESET, Fore.GREEN + args.directories + Fore.RESET))
     print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories found: ") + Fore.YELLOW + localized_int(len(dirs)))
     print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Files found: ") + Fore.YELLOW + localized_int(len(files)))
     print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET + _("Directories changed: ") + Fore.YELLOW + localized_int(len(changed_dirs)))
@@ -202,4 +202,4 @@ def main(arguments=None):
         print(Style.BRIGHT + Fore.GREEN + "  * " + Fore.RESET +  _("{} error files:").format(Fore.RED + localized_int(len(error_files))+ Fore.RESET))
         for e in error_files:
             print(Style.BRIGHT + Fore.RED + "     + " + Style.RESET_ALL + e)
-    print(Style.BRIGHT + _("Executed at {}, took {}.".format(datetime.datetime.now(),datetime.datetime.now()-start)))
+    print(Style.BRIGHT + _("Executed at {}, took {}.".format(Fore.GREEN + str(datetime.datetime.now()) + Fore.RESET, Fore.GREEN + str(datetime.datetime.now()-start) + Fore.RESET)))

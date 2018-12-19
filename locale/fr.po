@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecPermissions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-16 09:49+0100\n"
+"POT-Creation-Date: 2018-12-19 09:55+0100\n"
 "PO-Revision-Date: 2018-11-03 07:11+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: French\n"
@@ -146,8 +146,8 @@ msgstr "Le paramètre de path doit être absolu"
 msgid "Seems you gave a bad octal string in --files or --directories parameters. Use format 644 or 755 for example."
 msgstr ""
 
-msgid "RecPermissions summary:"
-msgstr "Résumé de RecPermissions :"
+msgid "RecPermissions in {} set owner to {}:{}, files to {} and directories to {}."
+msgstr ""
 
 msgid "Directories found: "
 msgstr "Répertoires trouvés :"
@@ -170,6 +170,9 @@ msgstr ""
 msgid "{} error files:"
 msgstr "{} erreurs dans les fichiers :"
 
+msgid "Executed at {}, took {}."
+msgstr ""
+
 msgid "This is a video to show how to use 'recpermissions' command"
 msgstr "C'est une vidéo pour montrer comment utiliser la commande 'recpermissions'"
 
@@ -184,3 +187,6 @@ msgstr "Nous vérifions le résultat"
 
 msgid "That's all"
 msgstr "C'est tout"
+
+#~ msgid "RecPermissions summary:"
+#~ msgstr "Résumé de RecPermissions :"
