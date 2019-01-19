@@ -34,6 +34,10 @@ Dependencies
 
 Changelog
 =========
+1.9.0
+-----
+  * Solved bug when using Default None arguments.
+
 1.8.0
 -----
   * Improved colorized output.
