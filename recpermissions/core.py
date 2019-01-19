@@ -68,6 +68,8 @@ def set_octal_string_permissions(path, octal):
 ## @param octal String with octal permissions. "644" or "755" for example
 ## @return Boolean if the octal string is valid
 def is_octal_string_permissions_valid(octal):
+    if octal==None: #Is valid but set function just ignore it
+         return True
     if len(octal)==3 and octal.isdigit()==True and octal.find("9")==-1:
          return True
     return False
@@ -191,7 +193,7 @@ def main(arguments=None):
         if b_permissions or b_ownership==True:
             changed_files.append(dirname)
 
-    print( _("RecPermissions in {} set owner to {}:{}, files to {} and directories to {}.").format(Fore.GREEN + args.absolute_path + Fore.RESET, Fore.GREEN + args.user + Fore.RESET, Fore.GREEN + args.group + Fore.RESET, Fore.GREEN + args.files + Fore.RESET, Fore.GREEN + args.directories + Fore.RESET))
+    print( _("RecPermissions in {}:").format(Fore.GREEN + args.absolute_path + Fore.RESET))
     print( Fore.GREEN + "  * " + Fore.RESET + _("Directories found: ") + Fore.YELLOW + localized_int(len(dirs)))
     print( Fore.GREEN + "  * " + Fore.RESET + _("Files found: ") + Fore.YELLOW + localized_int(len(files)))
     print( Fore.GREEN + "  * " + Fore.RESET + _("Directories changed: ") + Fore.YELLOW + localized_int(len(changed_dirs)))
