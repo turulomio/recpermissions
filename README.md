@@ -34,6 +34,10 @@ Dependencies
 
 Changelog
 =========
+1.10.0
+------
+  * Now user is informed when he tries to change ownership with uid or gid
+
 1.9.0
 -----
   * Solved bug when using Default None arguments.

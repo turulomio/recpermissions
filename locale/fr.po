@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecPermissions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-19 06:02+0100\n"
+"POT-Creation-Date: 2019-02-17 17:09+0100\n"
 "PO-Revision-Date: 2018-11-03 07:11+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: French\n"
@@ -139,6 +139,9 @@ msgstr "Si c'est établi, enlève tous les répertoires vides récursivement dan
 
 msgid "Directory who is going to be changed permissions and owner recursivily"
 msgstr "Répertoire dont on va changer les permissions et le propriétaire récursivement"
+
+msgid "Change owner by uid or gid is not allowed"
+msgstr ""
 
 msgid "Path parameter must be an absolute one"
 msgstr "Le paramètre de path doit être absolu"

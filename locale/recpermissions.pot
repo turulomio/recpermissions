@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-19 06:03+0100\n"
+"POT-Creation-Date: 2019-02-17 17:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,6 +138,9 @@ msgid "If it's established, removes empty directories recursivily from current p
 msgstr ""
 
 msgid "Directory who is going to be changed permissions and owner recursivily"
+msgstr ""
+
+msgid "Change owner by uid or gid is not allowed"
 msgstr ""
 
 msgid "Path parameter must be an absolute one"
