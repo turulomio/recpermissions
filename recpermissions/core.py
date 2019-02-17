@@ -103,6 +103,20 @@ def set_file_ownership(path, user, group):
         except:
             return False
 
+
+## Returns if a string can be casted to integer. Used to detect if owner is a uid or gid
+## @param s String
+## @return boolean
+def is_uid_or_gid(s):
+    if s==None:
+        return False
+    try:
+        int(s)
+        return True
+    except:
+        return False
+
+
 ## recpermissions main script
 ## If arguments is None, launches with sys.argc parameters. Entry point is recpermissions:main
 ## You can call with main(['--pretend']). It's equivalento to os.system('recpermissions --pretend')
@@ -129,6 +143,10 @@ def main(arguments=None):
         locale.setlocale(locale.LC_ALL, ".".join(locale.getlocale()))
     except:
         pass
+
+    if is_uid_or_gid(args.user)==True or is_uid_or_gid(args.group)==True:
+        print(Fore.RED + Style.BRIGHT + _("Change owner by uid or gid is not allowed") + Style.RESET_ALL)
+        sys.exit(1)
 
     if os.path.isabs(args.absolute_path)==False:
         print(Fore.RED + Style.BRIGHT + _("Path parameter must be an absolute one") + Style.RESET_ALL)
