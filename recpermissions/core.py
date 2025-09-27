@@ -1,19 +1,17 @@
 ## @namespace recpermissions.core
 ## @brief Core functions of the package
-import datetime
-import platform
-import sys
+from datetime import datetime
+from platform import platform_system
+from sys import exit
 
-if platform.system()=="Windows":
+if platform_system()=="Windows":
     print("This script only works on Linux")
-    sys.exit(0)
+    exit(1)
 
 import argparse
-import gettext
 import grp
 import locale
 import os
-import pkg_resources
 import pwd
 import shutil
 
@@ -21,11 +19,6 @@ from colorama import Fore, Style, init as colorama_init
 from recpermissions.version import __versiondate__, __version__
 from stat import ST_MODE
 
-try:
-    t=gettext.translation('recpermissions',pkg_resources.resource_filename("recpermissions","locale"))
-    _=t.gettext
-except:
-    _=str
 
 ## Returns a localized int
 ## @param value Integer to localize
@@ -122,7 +115,7 @@ def is_uid_or_gid(s):
 ## You can call with main(['--pretend']). It's equivalento to os.system('recpermissions --pretend')
 ## @param arguments is an array with parser arguments. For example: ['--max_files_to_store','9']. 
 def main(arguments=None):
-    start=datetime.datetime.now()
+    start=datetime.now()
     parser=argparse.ArgumentParser(prog='recpermissions', description=_('Change Linux permissions and ownership in one step. It can delete empty directories when necessary.'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(__versiondate__.year)), formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument('--version', action='version', version=__version__)
 

@@ -1,0 +1,28 @@
+[project]
+name = "recpermissions"
+version = "1.10.1"
+description = "Script to change permissions and owner recursivily from current directory"
+authors = [
+    {name = "turulomio",email = "turulomio@yahoo.es"}
+]
+license = {text = "GPL-3"}
+readme = "README.md"
+requires-python = ">=3.13,<4"
+dependencies = [
+    "colorama (>=0.4.6,<0.5.0)",
+    "mangenerator (>=0.4.0,<0.5.0)"
+]
+
+[tool.poetry]
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.37.0"
+poetry = "^2.2.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks]
+release = { script = "recpermissions.poethepoet:release" }
+translate = { script = "recpermissions.poethepoet:translate" }
