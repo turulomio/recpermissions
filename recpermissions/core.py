@@ -17,11 +17,11 @@ from recpermissions import __versiondate__, __version__, _, epilog
 from stat import ST_MODE
 
 
-## Returns a localized int
-## @param value Integer to localize
-## @return string
-def localized_int(value):
-    return format_string("%d", value, True)
+class Returns:
+    Changed=1
+    Ignored=2
+    Error=3
+
 
 ## Check if a directory is empty
 ## @param dir String with the directory to check
@@ -42,17 +42,27 @@ def get_octal_string_permissions(path):
 ## @param path String with the path. Can be a dir or a file
 ## @param octal String with octal permissions. "644" or "755" for example
 ## @return Boolean if file has been changed
-def set_octal_string_permissions(path, octal):
-    if octal==None:
-        return False
-    if get_octal_string_permissions(path)==octal:
-        return False
-    else:
+def set_octal_string_permissions(o, octal):
+    if octal==None:        
+        o["permissions_change"]=Returns.Error
+        o["permissions_text"]= _("Octal string is None")
+        return o
+    if get_octal_string_permissions(o["path"])==octal: 
+        o["permissions_change"]=Returns.Ignored
+        o["permissions_text"]=  _("Permissions haven't changed")
+        return o
+    else:   
         try:
-            chmod(path, int(octal, 8))
-            return True
-        except:
-            return False
+            chmod(o["path"], int(octal, 8))
+            o["permissions_change"]=Returns.Changed
+            o["permissions_text"]= _("Permissions have changed")   
+            return o
+        except Exception as e:
+            o["permissions_change"]=Returns.Error
+            o["permissions_text"]= _("Error changing permissions: {}").format(e)   
+            return o
+
+
 
 ## Returns if the octal string has valid octal permissions
 ## @param octal String with octal permissions. "644" or "755" for example
@@ -67,31 +77,48 @@ def is_octal_string_permissions_valid(octal):
 ## Gets user and root from a path
 ## @param path String with the path. Can be a dir or a file
 ## @return a tuple (root, root), for example. If uid of the file isn't in /etc/passwd, returns uid and gid
-def get_file_ownership(path):
+def get_file_ownership(p):
     try:
-        return (getpwuid(stat(path).st_uid).pw_name, getgrgid(stat(path).st_gid).gr_name)
+        return (getpwuid(stat(p).st_uid).pw_name, getgrgid(stat(p).st_gid).gr_name)
     except:
-        return (stat(path).st_uid, stat(path).st_gid)
+        return (stat(p).st_uid, stat(p).st_gid)
 
 ## Set file user and grup
 ## @param path String with the path. Can be a dir or a file
 ## @param user String or None. If none it doesn't change the user
 ## @param group String or None. If none it doesn't change the group
 ## @return Boolean if file has been changed
-def set_file_ownership(path, user, group):
+def set_file_ownership(o, user, group):
     if (user, group)==(None, None):
-        return False
-    tuple=get_file_ownership(path)
+        o["ownership_change"]=Returns.Error
+        o["ownership_text"]=_("User and group are None")
+        return o
+    tuple=get_file_ownership(o["path"])
     if tuple==(user, group):
-        return False
+        o["ownership_change"]=Returns.Ignored
+        o["ownership_text"]=_("Ownership hasn't changed")
+        return o
     else:
         user=tuple[0] if user==None else user
         group=tuple[1] if group==None else group
         try:
-            chown(path, user, group)
-            return True
-        except:
-            return False
+            chown(o["path"], user, group)
+            o["ownership_change"]=Returns.Changed
+            o["ownership_text"]=_("Ownership has changed")
+            return o
+        except Exception as e:        
+            o["ownership_change"]=Returns.Error
+            o["ownership_text"]=_("Error changing ownership: {}").format(e)
+            return o
+
+
+def process(o,user,group,files,directories):
+    o=set_file_ownership(o, user, group)
+    if o["type"]=="dir":
+        o=set_octal_string_permissions(o, directories)
+    elif o["type"]=="file":
+        o=set_octal_string_permissions(o, files)
+    return o
 
 
 ## Returns if a string can be casted to integer. Used to detect if owner is a uid or gid
@@ -128,6 +155,40 @@ def main_recpermissions():
     recpermissions(args.user, args.group, args.files, args.directories, args.absolute_path)
 
 
+
+
+def path_object(p):
+    """
+        Gets path atributes to be reused
+    """
+    if p is None:
+        type_= None
+    elif not path.exists(p):
+        type_= None
+    elif path.islink(p):
+        type_= "link"
+    elif path.isdir(p):
+        type_= "dir"
+    elif path.isfile(p):
+        type_= "file"
+    else:
+        type_= "unknown"
+
+    user, group=get_file_ownership(p)
+
+
+    return {
+        "path": p,
+        "type": type_,
+        "permissions": get_octal_string_permissions(p),
+        "user": user,
+        "group": group,
+        "ownership_change": None,
+        "permissions_change": None,
+        "ownership_text": None,
+        "permissions_text": None,
+    }
+
 def recpermissions(user,group,files,directories,absolute_path):
     start=datetime.now()
 
@@ -148,60 +209,52 @@ def recpermissions(user,group,files,directories,absolute_path):
     if not (is_octal_string_permissions_valid(files) and is_octal_string_permissions_valid(directories)):
         print(Fore.RED + Style.BRIGHT + _("Seems you gave a bad octal string in --files or --directories parameters. Use format 644 or 755 for example."))
         exit(1)
+        
+        
+    processed=[]
 
-    files=0
-    dirs=0
-    changed_dirs=0
-    changed_files=0
-    error_files=[]
-    ignored_symlinks=0
-
-    #Generate list of files and directories
-    if set_octal_string_permissions(absolute_path,directories) and set_file_ownership(absolute_path, user, group):
-        changed_dirs+=1
-
-    #Change absolute path
-
-
+    #Process absolute path
+    processed.append(process(path_object(absolute_path), user, group, files, directories))
     for dirpath, dirnames, filenames in walk(absolute_path):
-        # Iterate directories
+        # Process directories
         for d in dirnames:
-            p=path.join(dirpath, d)
-            dirs+=1
-            
-            if path.islink(p):
-                ignored_symlinks+=1
-            elif not path.exists(p):
-                error_files.append(p)
-            else:
-                if set_octal_string_permissions(p,directories) and set_file_ownership(p , user, group):
-                    changed_dirs+=1
-                else:
-                    error_files.append(p)   
+            p=path.join(dirpath, d) # Full path to the directory
+            processed.append(process(path_object(p), user, group, files, directories))
 
         #Iterate files
         for f in filenames:
             p=path.join(dirpath, f) 
-            files+=1
-            if path.islink(p):
-                ignored_symlinks+=1
-            elif not path.exists(p):
-                error_files.append(p)   
-            else:
-                if set_octal_string_permissions(p,files) and set_file_ownership(p, user, group):
-                    changed_dirs+=1
-                else:
-                    error_files.append(p)   
+            processed.append(process(path_object(p), user, group, files, directories))
 
+
+    dirs=sum(1 for item in  processed if item.get('type') == 'dir')
+    files=sum(1 for item in processed if item.get('type') == 'file')
+    changed_dirs_ownership=sum(1 for item in processed if item.get('ownership_change') == Returns.Changed and item.get('type') =="dir") 
+    changed_dirs_permissions=sum(1 for item in processed if item.get('permissions_change') == Returns.Changed and item.get('type') =="dir") 
+    changed_files_ownership=sum(1 for item in processed if item.get('ownership_change') == Returns.Changed and item.get('type') =="file") 
+    changed_files_permissions=sum(1 for item in processed if item.get('permissions_change') == Returns.Changed and item.get('type') =="file")
+    ignored_symlinks=sum(1 for item in processed if item.get('type') == 'link')
     print( _("RecPermissions in {}:").format(Fore.GREEN + absolute_path + Fore.RESET))
-    print( Fore.GREEN + "  * " + Fore.RESET + _("Directories found: ") + Fore.YELLOW + localized_int(dirs))
-    print( Fore.GREEN + "  * " + Fore.RESET + _("Files found: ") + Fore.YELLOW + localized_int(files))
-    print( Fore.GREEN + "  * " + Fore.RESET + _("Directories changed: ") + Fore.YELLOW + localized_int(changed_dirs))
-    print( Fore.GREEN + "  * " + Fore.RESET + _("Files changed: ") + Fore.YELLOW + localized_int(changed_files))
-    print( Fore.GREEN + "  * " + Fore.RESET + _("Ignored symlinks: ") + Fore.YELLOW + localized_int(ignored_symlinks))
-    if len(error_files)>0:
-        print( Fore.GREEN + "  * " + Fore.RESET +  _("{} error files:").format(Fore.RED + localized_int(len(error_files))+ Fore.RESET))
-        for e in error_files:
+    print( Fore.GREEN + "  * " + Fore.RESET + _("Directories found: ") + Fore.YELLOW + str(dirs))
+    print( Fore.GREEN + "  * " + Fore.RESET + _("Files found: ") + Fore.YELLOW + str(files))
+    print( Fore.GREEN + "  * " + Fore.RESET + _("Directories ownership changed: ") + Fore.YELLOW + str(changed_dirs_ownership))
+    print( Fore.GREEN + "  * " + Fore.RESET + _("Files ownership changed: ") + Fore.YELLOW + str(changed_files_ownership))
+    print( Fore.GREEN + "  * " + Fore.RESET + _("Directories permissions changed: ") + Fore.YELLOW + str(changed_dirs_permissions))
+    print( Fore.GREEN + "  * " + Fore.RESET + _("Files permissions changed: ") + Fore.YELLOW + str(changed_files_permissions))
+    print( Fore.GREEN + "  * " + Fore.RESET + _("Ignored symlinks: ") + Fore.YELLOW + str(ignored_symlinks))
+
+
+    errors=[]
+    for o in processed:
+        if o["ownership_change"]==Returns.Error:
+            errors.append(o["ownership_text"])
+        if o["permissions_change"]==Returns.Error:
+            errors.append(o["permissions_text"])
+
+
+    if len(errors)>0:
+        print( Fore.GREEN + "  * " + Fore.RESET +  _("{} error files:").format(Fore.RED + str(len(errors))+ Fore.RESET))
+        for e in errors:
             print( Fore.RED + "     + " + Style.RESET_ALL + e)
     print( _("Executed at {}, took {}.").format(Fore.GREEN + str(datetime.now()) + Fore.RESET, Fore.GREEN + str(datetime.now()-start) + Fore.RESET))
 
@@ -216,7 +269,7 @@ def main_remove_empty_directories():
 
     colorama_init(autoreset=True)
 
-    recpermissions(args.pretend, args.absolute_path)
+    remove_empty_directories(args.pretend, args.absolute_path)
 
 
 def remove_empty_directories(pretend,absolute_path):
@@ -233,7 +286,7 @@ def remove_empty_directories(pretend,absolute_path):
         exit(1)
 
 
-    deleted_dirs=0
+    deleted_dirs=[]
     error_directories=[]
     ignored_symlinks=0
 
@@ -243,24 +296,31 @@ def remove_empty_directories(pretend,absolute_path):
     for dirpath, dirnames, filenames in walk(absolute_path):
         for d in dirnames:
             p = path.join(dirpath,  d)
-            if path.islink(d)==True:
+            if path.islink(p)==True:
                 ignored_symlinks+=1
                 continue
-            if path.exists(d)==False:
-                error_directories.append(d)
+            if path.exists(p)==False:
+                error_directories.append(p)
                 continue
 
-        if pretend is False:
-            if is_dir_empty(d):
-                rmdir(d)
-                deleted_dirs+=1
+        if is_dir_empty(p):
+            if pretend is False:
+                rmdir(p)
+            deleted_dirs.append(p)
 
 
     print( _("RecPermissions in {}:").format(Fore.GREEN + absolute_path + Fore.RESET))
-    print( Fore.GREEN + "  * " + Fore.RESET + _("Directories deleted: ") + Fore.YELLOW + localized_int(len(deleted_dirs)))
-    print( Fore.GREEN + "  * " + Fore.RESET + _("Ignored symlinks: ") + Fore.YELLOW + localized_int(len(ignored_symlinks)))
+    print( Fore.GREEN + "  * " + Fore.RESET + _("Directories deleted: ") + Fore.YELLOW + str(len(deleted_dirs)))
+    print( Fore.GREEN + "  * " + Fore.RESET + _("Ignored symlinks: ") + Fore.YELLOW + str(ignored_symlinks))
+    if len(deleted_dirs)>0:
+        if (pretend):
+            print( Fore.GREEN + "  * " + Fore.RESET +  _("{} deleted dirs (pretend):").format(Fore.GREEN + str(len(deleted_dirs))+ Fore.RESET))
+        else:
+            print( Fore.GREEN + "  * " + Fore.RESET +  _("{} deleted dirs:").format(Fore.GREEN + str(len(deleted_dirs))+ Fore.RESET))
+        for d in deleted_dirs:
+            print( Fore.GREEN + "     + " + Style.RESET_ALL + d)
     if len(error_directories)>0:
-        print( Fore.GREEN + "  * " + Fore.RESET +  _("{} error files:").format(Fore.RED + localized_int(len(error_directories))+ Fore.RESET))
+        print( Fore.GREEN + "  * " + Fore.RESET +  _("{} errors:").format(Fore.RED + str(len(error_directories))+ Fore.RESET))
         for e in error_directories:
             print( Fore.RED + "     + " + Style.RESET_ALL + e)
     print( _("Executed at {}, took {}.").format(Fore.GREEN + str(datetime.now()) + Fore.RESET, Fore.GREEN + str(datetime.now()-start) + Fore.RESET))
