@@ -14,6 +14,11 @@ dependencies = [
 
 [tool.poetry]
 
+[tool.poetry.scripts]
+recpermissions='recpermissions.core:main_recpermissions'
+remove_empty_directories='recpermissions.core:main_remove_empty_directories'
+
+
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.37.0"
 poetry = "^2.2.1"

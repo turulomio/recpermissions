@@ -14,3 +14,5 @@ __versiondatetime__=datetime.now()
 __versiondate__ = __versiondatetime__.date()
 __version__ = '1.10.1'
 
+def epilog():
+    return _("Developed by Mariano Muñoz 2018-{}").format(__versiondate__.year  )
