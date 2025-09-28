@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-27 19:26+0200\n"
+"POT-Creation-Date: 2025-09-28 08:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,31 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Change Linux permissions and ownership in one step. It can delete empty directories when necessary."
+msgid "Octal string is None"
 msgstr ""
 
-msgid "Developed by Mariano Muñoz 2018-{}"
+msgid "Permissions haven't changed"
+msgstr ""
+
+msgid "Permissions have changed"
+msgstr ""
+
+msgid "Error changing permissions: {}"
+msgstr ""
+
+msgid "User and group are None"
+msgstr ""
+
+msgid "Ownership hasn't changed"
+msgstr ""
+
+msgid "Ownership has changed"
+msgstr ""
+
+msgid "Error changing ownership: {}"
+msgstr ""
+
+msgid "Change Linux permissions and ownership in one step. It can delete empty directories when necessary."
 msgstr ""
 
 msgid "File owner will be changed to this parameter. It does nothing if it's not set."
@@ -33,12 +54,6 @@ msgid "File permissions to set in all files. It does nothing if it's not set."
 msgstr ""
 
 msgid "Directory permissions to set in all directories. It does nothing if it's not set."
-msgstr ""
-
-msgid "If it's established, removes empty directories recursivily from current path."
-msgstr ""
-
-msgid "Only changes permissions to the file or directory passed in absolute_path parameter."
 msgstr ""
 
 msgid "Directory who is going to be changed permissions and owner recursivily"
@@ -62,13 +77,16 @@ msgstr ""
 msgid "Files found: "
 msgstr ""
 
-msgid "Directories changed: "
+msgid "Directories ownership changed: "
 msgstr ""
 
-msgid "Files changed: "
+msgid "Files ownership changed: "
 msgstr ""
 
-msgid "Directories deleted: "
+msgid "Directories permissions changed: "
+msgstr ""
+
+msgid "Files permissions changed: "
 msgstr ""
 
 msgid "Ignored symlinks: "
@@ -78,6 +96,27 @@ msgid "{} error files:"
 msgstr ""
 
 msgid "Executed at {}, took {}."
+msgstr ""
+
+msgid "Removes empty directories"
+msgstr ""
+
+msgid "Only changes permissions to the file or directory passed in absolute_path parameter."
+msgstr ""
+
+msgid "Directories deleted: "
+msgstr ""
+
+msgid "{} deleted dirs (pretend):"
+msgstr ""
+
+msgid "{} deleted dirs:"
+msgstr ""
+
+msgid "{} errors:"
+msgstr ""
+
+msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr ""
 
 msgid "New Release:"
