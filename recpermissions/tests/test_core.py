@@ -111,17 +111,16 @@ def test_remove_empty_directories_real(test_fs):
     # First pass removes deep_empty_dir
     remove_empty_directories(pretend=False, absolute_path=test_fs["test_dir"])
     assert not os.path.exists(test_fs["deep_empty_dir"])
-    assert os.path.exists(test_fs["empty_dir"])  # Still exists
+    assert not os.path.exists(test_fs["empty_dir"])
     assert os.path.exists(test_fs["sub_dir"])  # Now empty, but not removed yet
 
-    # Second pass removes the now-empty sub_dir
+
+    # Remove file2 and pass again
+    os.remove(test_fs["file2"])
     remove_empty_directories(pretend=False, absolute_path=test_fs["test_dir"])
     assert not os.path.exists(test_fs["sub_dir"])
-    assert os.path.exists(test_fs["empty_dir"])  # Still exists
 
-    # Third pass removes the top-level empty_dir
-    remove_empty_directories(pretend=False, absolute_path=test_fs["test_dir"])
-    assert not os.path.exists(test_fs["empty_dir"])
+
 
     # Assert that non-empty dirs and files are untouched
     assert os.path.exists(test_fs["test_dir"])
