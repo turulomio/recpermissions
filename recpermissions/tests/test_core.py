@@ -1,10 +1,11 @@
 import pytest
-import tempfile
-import shutil
-import os
-import pwd
-import grp
-import stat
+from tempfile import mkdtemp
+from shutil import rmtree
+from os import getuid, getgid, makedirs, remove, stat as os_stat
+from os import path
+from pwd import getpwuid
+from grp import getgrgid
+from stat import S_IMODE
 
 # It's good practice to make the test runner find the modules.
 # This assumes you run pytest or unittest from the project root.
@@ -18,9 +19,9 @@ def test_fs(monkeypatch):
     # Suppress print output for all tests using this fixture
     monkeypatch.setattr('builtins.print', lambda *args, **kwargs: None)
 
-    test_dir = tempfile.mkdtemp()
-    user = pwd.getpwuid(os.getuid()).pw_name
-    group = grp.getgrgid(os.getgid()).gr_name
+    test_dir = mkdtemp()
+    user = getpwuid(getuid()).pw_name
+    group = getgrgid(getgid()).gr_name
 
     # Create a structure inside the temp directory
     # test_dir/
@@ -33,36 +34,36 @@ def test_fs(monkeypatch):
         "test_dir": test_dir,
         "user": user,
         "group": group,
-        "file1": os.path.join(test_dir, "file1.txt"),
-        "empty_dir": os.path.join(test_dir, "empty_dir"),
-        "sub_dir": os.path.join(test_dir, "sub_dir"),
-        "file2": os.path.join(test_dir, "sub_dir", "file2.txt"),
-        "deep_empty_dir": os.path.join(test_dir, "sub_dir", "deep_empty_dir"),
+        "file1": path.join(test_dir, "file1.txt"),
+        "empty_dir": path.join(test_dir, "empty_dir"),
+        "sub_dir": path.join(test_dir, "sub_dir"),
+        "file2": path.join(test_dir, "sub_dir", "file2.txt"),
+        "deep_empty_dir": path.join(test_dir, "sub_dir", "deep_empty_dir"),
     }
 
     with open(fs["file1"], "w") as f:
         f.write("hello")
-    os.makedirs(fs["empty_dir"])
-    os.makedirs(fs["sub_dir"])
+    makedirs(fs["empty_dir"])
+    makedirs(fs["sub_dir"])
     with open(fs["file2"], "w") as f:
         f.write("world")
-    os.makedirs(fs["deep_empty_dir"])
+    makedirs(fs["deep_empty_dir"])
 
     yield fs
 
     # Teardown: remove the temporary directory
-    shutil.rmtree(test_dir)
+    rmtree(test_dir)
 
-def get_permissions(path):
+def get_permissions(p):
     """Helper to get octal permissions from a path."""
-    return oct(stat.S_IMODE(os.stat(path).st_mode))
+    return oct(S_IMODE(os_stat(p).st_mode))
 
-def get_ownership(path):
+def get_ownership(p):
     """Helper to get user/group from a path."""
-    file_stat = os.stat(path)
+    file_stat = os_stat(p)
     return (
-        pwd.getpwuid(file_stat.st_uid).pw_name,
-        grp.getgrgid(file_stat.st_gid).gr_name
+        getpwuid(file_stat.st_uid).pw_name,
+        getgrgid(file_stat.st_gid).gr_name
     )
 
 def test_recpermissions(test_fs):
@@ -100,8 +101,8 @@ def test_remove_empty_directories_pretend(test_fs):
     remove_empty_directories(pretend=True, absolute_path=test_fs["test_dir"])
 
     # Assert that empty directories still exist
-    assert os.path.exists(test_fs["empty_dir"])
-    assert os.path.exists(test_fs["deep_empty_dir"])
+    assert path.exists(test_fs["empty_dir"])
+    assert path.exists(test_fs["deep_empty_dir"])
 
 def test_remove_empty_directories_real(test_fs):
     """Test remove_empty_directories actually removes dirs."""
@@ -111,21 +112,21 @@ def test_remove_empty_directories_real(test_fs):
 
     # First pass removes deep_empty_dir
     remove_empty_directories(pretend=False, absolute_path=test_fs["test_dir"])
-    assert not os.path.exists(test_fs["deep_empty_dir"])
-    assert not os.path.exists(test_fs["empty_dir"])
-    assert os.path.exists(test_fs["sub_dir"])  # Now empty, but not removed yet
+    assert not path.exists(test_fs["deep_empty_dir"])
+    assert not path.exists(test_fs["empty_dir"])
+    assert path.exists(test_fs["sub_dir"])  # Now empty, but not removed yet
 
 
     # Remove file2 and pass again
-    os.remove(test_fs["file2"])
+    remove(test_fs["file2"])
     remove_empty_directories(pretend=False, absolute_path=test_fs["test_dir"])
-    assert not os.path.exists(test_fs["sub_dir"])
+    assert not path.exists(test_fs["sub_dir"])
 
 
 
     # Assert that non-empty dirs and files are untouched
-    assert os.path.exists(test_fs["test_dir"])
-    assert os.path.exists(test_fs["file1"])
+    assert path.exists(test_fs["test_dir"])
+    assert path.exists(test_fs["file1"])
 
 def test_main_recpermissions_no_args(monkeypatch):
     """Test that main_recpermissions exits when no arguments are provided."""
