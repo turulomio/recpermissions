@@ -1,4 +1,5 @@
-# Recpermissions project
+# Recpermissions [![PyPI - Downloads](https://img.shields.io/pypi/dm/recpermissions?label=Pypi%20downloads)](https://pypi.org/project/recpermissions/)   [![Tests](https://github.com/turulomio/recpermissions/actions/workflows/ci.yml/badge.svg)](https://github.com/turulomio/recpermissions/actions/workflows/ci.yml)
+
 
 ## What is RecPermissions?
 It's a script to change Linux permissions and ownership in one step. It can delete empty directories when necessary.
