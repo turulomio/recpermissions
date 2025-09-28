@@ -7,7 +7,9 @@ try:
     def _(s):
         return t.gettext(s)
 except:
-    _=str
+    def _(s):
+        return s
+
 
 
 __versiondatetime__=datetime(2025,9,28,8,42)

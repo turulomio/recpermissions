@@ -9,7 +9,7 @@ if platform_system()=="Windows":
 from argparse import ArgumentParser, RawTextHelpFormatter
 from grp import getgrgid
 from locale import LC_ALL, format_string, getlocale, setlocale
-from os import chmod, listdir, path, rmdir, stat, walk
+from os import chmod, listdir, path, rmdir, stat, walk, scandir
 from pwd import getpwuid
 from shutil import chown
 from colorama import Fore, Style, init as colorama_init
@@ -27,16 +27,25 @@ class Returns:
 ## @param dir String with the directory to check
 ## @return boolean
 def is_dir_empty(dir):
-    if not listdir(dir):
-        return True
-    else:
+    """Check if the given directory path is empty."""
+    # os.scandir returns an iterator. any() checks if the iterator yields any item.
+    # The 'with' statement ensures the iterator is properly closed.
+    if not path.isdir(dir):
+        # Handle cases where the path is not a directory or doesn't exist
         return False
+                        
+    with scandir(dir) as entries:
+        return not any(entries)
 
 ## Gets octal string permissions from a file
 ## @param path String with the path. Can be a dir or a file
 ## @return string "644" or "755", for example
 def get_octal_string_permissions(path):
-    return oct(stat(path)[ST_MODE])[-3:]
+    try:
+        return oct(stat(path)[ST_MODE])[-3:]
+    except:
+        return None
+
 
 ## Sets octal string permissions to a file
 ## @param path String with the path. Can be a dir or a file
@@ -47,7 +56,7 @@ def set_octal_string_permissions(o, octal):
         o["permissions_change"]=Returns.Error
         o["permissions_text"]= _("Octal string is None")
         return o
-    if get_octal_string_permissions(o["path"])==octal: 
+    if o["permissions"]==octal: 
         o["permissions_change"]=Returns.Ignored
         o["permissions_text"]=  _("Permissions haven't changed")
         return o
@@ -81,7 +90,7 @@ def get_file_ownership(p):
     try:
         return (getpwuid(stat(p).st_uid).pw_name, getgrgid(stat(p).st_gid).gr_name)
     except:
-        return (stat(p).st_uid, stat(p).st_gid)
+        return (None,None)
 
 ## Set file user and grup
 ## @param path String with the path. Can be a dir or a file
@@ -93,14 +102,13 @@ def set_file_ownership(o, user, group):
         o["ownership_change"]=Returns.Error
         o["ownership_text"]=_("User and group are None")
         return o
-    tuple=get_file_ownership(o["path"])
-    if tuple==(user, group):
+    if (o["user"], o["group"])==(user, group):
         o["ownership_change"]=Returns.Ignored
         o["ownership_text"]=_("Ownership hasn't changed")
         return o
     else:
-        user=tuple[0] if user==None else user
-        group=tuple[1] if group==None else group
+        # user=tuple[0] if user==None else user
+        # group=tuple[1] if group==None else group
         try:
             chown(o["path"], user, group)
             o["ownership_change"]=Returns.Changed
@@ -224,6 +232,7 @@ def recpermissions(user,group,files,directories,absolute_path):
         #Iterate files
         for f in filenames:
             p=path.join(dirpath, f) 
+            # print(p)
             processed.append(process(path_object(p), user, group, files, directories))
 
 
@@ -293,7 +302,7 @@ def remove_empty_directories(pretend,absolute_path):
     #Generate list of files and directories
 
     #Iterate list of dirs
-    for dirpath, dirnames, filenames in walk(absolute_path):
+    for dirpath, dirnames, files in walk(absolute_path):
         for d in dirnames:
             p = path.join(dirpath,  d)
             if path.islink(p)==True:
@@ -303,10 +312,13 @@ def remove_empty_directories(pretend,absolute_path):
                 error_directories.append(p)
                 continue
 
-        if is_dir_empty(p):
-            if pretend is False:
-                rmdir(p)
-            deleted_dirs.append(p)
+            if is_dir_empty(p):
+                if pretend is False:
+                    try:
+                            rmdir(p)
+                    except:
+                        error_directories.append(p)                
+                deleted_dirs.append(p)
 
 
     print( _("RecPermissions in {}:").format(Fore.GREEN + absolute_path + Fore.RESET))
