@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecPermissions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-28 08:05+0200\n"
+"POT-Creation-Date: 2025-09-28 08:44+0200\n"
 "PO-Revision-Date: 2018-11-03 07:11+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: French\n"
@@ -122,14 +122,14 @@ msgstr "Développé par Mariano Muñoz 2018-{}"
 msgid "New Release:"
 msgstr "Nouvelle sortie :"
 
-msgid "  * Change version and date in version.py"
-msgstr " * Changer la version et la date dans version.py"
+msgid "  * Create a Github issue with the new version tag"
+msgstr ""
 
-msgid "  * Edit Changelog in README"
-msgstr " * Editer le Changelog dans le README"
+msgid "  * Change version and datetime in __init__.py and in pyproject.toml"
+msgstr ""
 
-msgid "If changed restart from first python setup.py doc"
-msgstr "S'il y a eu modification, recommencer depuis le premier document python setup.py"
+msgid "  * Make a pull request to main branch"
+msgstr ""
 
 msgid "  * Make a new tag in github"
 msgstr " * Faire un nouveau tag dans GitHub"
@@ -140,3 +140,11 @@ msgstr " * Créer un nouveau ebuild gentoo avec la nouvelle version et l'install
 msgid "  * Upload to portage repository"
 msgstr " * Uploader au dépôt de portage"
 
+#~ msgid "  * Change version and date in version.py"
+#~ msgstr " * Changer la version et la date dans version.py"
+
+#~ msgid "  * Edit Changelog in README"
+#~ msgstr " * Editer le Changelog dans le README"
+
+#~ msgid "If changed restart from first python setup.py doc"
+#~ msgstr "S'il y a eu modification, recommencer depuis le premier document python setup.py"

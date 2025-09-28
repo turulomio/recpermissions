@@ -10,9 +10,9 @@ except:
     _=str
 
 
-__versiondatetime__=datetime.now()
+__versiondatetime__=datetime(2025,9,28,8,42)
 __versiondate__ = __versiondatetime__.date()
-__version__ = '1.10.1'
+__version__ = '2.0.0'
 
 def epilog():
     return _("Developed by Mariano Muñoz 2018-{}").format(__versiondate__.year  )
