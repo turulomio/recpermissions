@@ -8,7 +8,8 @@ import stat
 
 # It's good practice to make the test runner find the modules.
 # This assumes you run pytest or unittest from the project root.
-from recpermissions.core import recpermissions, remove_empty_directories
+from recpermissions.core import recpermissions, remove_empty_directories, main_recpermissions, main_remove_empty_directories
+
 
 
 @pytest.fixture
@@ -126,3 +127,19 @@ def test_remove_empty_directories_real(test_fs):
     assert os.path.exists(test_fs["test_dir"])
     assert os.path.exists(test_fs["file1"])
 
+def test_main_recpermissions_no_args(monkeypatch):
+    """Test that main_recpermissions exits when no arguments are provided."""
+    # Prevent sys.argv from being used by argparse
+    # monkeypatch.setattr('sys.argv', ['recpermissions'])
+    with pytest.raises(SystemExit) as e:
+        main_recpermissions()
+    assert e.type == SystemExit
+    assert e.value.code == 2
+
+def test_main_remove_empty_directories_no_args(monkeypatch):
+    """Test that main_remove_empty_directories exits when no arguments are provided."""
+    # monkeypatch.setattr('sys.argv', ['remove-empty-dirs'])
+    with pytest.raises(SystemExit) as e:
+        main_remove_empty_directories()
+    assert e.type == SystemExit
+    assert e.value.code == 2

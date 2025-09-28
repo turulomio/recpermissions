@@ -1,6 +1,16 @@
 from recpermissions import _, __version__
 from os import system
 
+
+def pytest():
+    system("pytest")
+    
+def coverage():
+    system("coverage run --omit='recpermissions/tests/*' -m pytest && coverage report && coverage html")
+
+
+
+
 def release():
     print(_("New Release:"))
     print(_("  * Change version and date in version.py"))

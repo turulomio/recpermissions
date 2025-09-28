@@ -3,7 +3,7 @@ from gettext import translation
 from importlib.resources import files
 
 try:
-    t=translation('toomanyfiles', files("toomanyfiles/") / 'locale')
+    t=translation('recpermissions', files("recpermissions") / 'locale')
     def _(s):
         return t.gettext(s)
 except:

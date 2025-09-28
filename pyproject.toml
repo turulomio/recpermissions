@@ -32,3 +32,5 @@ build-backend = "poetry.core.masonry.api"
 [tool.poe.tasks]
 release = { script = "recpermissions.poethepoet:release" }
 translate = { script = "recpermissions.poethepoet:translate" }
+pytest = { script = "recpermissions.poethepoet:pytest" }
+coverage = { script = "recpermissions.poethepoet:coverage" }
