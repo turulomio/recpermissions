@@ -1,0 +1,142 @@
+# French translations for PACKAGE package.
+# Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Turulomio <turulomio@yahoo.es>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: RecPermissions\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-28 08:05+0200\n"
+"PO-Revision-Date: 2018-11-03 07:11+0100\n"
+"Last-Translator: root <turulomio@yahoo.es>\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Octal string is None"
+msgstr "La chaîne octale est nulle"
+
+msgid "Permissions haven't changed"
+msgstr "Les permissions n'ont pas changé"
+
+msgid "Permissions have changed"
+msgstr "Les permissions ont changé"
+
+msgid "Error changing permissions: {}"
+msgstr "Erreur en changeant les permissions : {}"
+
+msgid "User and group are None"
+msgstr "L'utilisateur et le groupe sont nuls"
+
+msgid "Ownership hasn't changed"
+msgstr "La propriété n'a pas changé"
+
+msgid "Ownership has changed"
+msgstr "La propriété a changé"
+
+msgid "Error changing ownership: {}"
+msgstr "Erreur en changeant la propriété : {}"
+
+msgid "Change Linux permissions and ownership in one step. It can delete empty directories when necessary."
+msgstr "Changer les permissions et possessions de Linux en une étape. Il peut supprimer les répertoires vides quand c'est nécessaire."
+
+msgid "File owner will be changed to this parameter. It does nothing if it's not set."
+msgstr "Le propriétaire du fichier prendra cette valeur. Cela ne fait rien si elle n'est pas définie."
+
+msgid "File owner group will be changed to this parameter. It does nothing if it's not set."
+msgstr "Le groupe propriétaire du fichier prendra cette valeur. Cela ne fait rien si elle n'est pas définie"
+
+msgid "File permissions to set in all files. It does nothing if it's not set."
+msgstr "Permissions de fichier à attribuer à tous les fichiers. Cela ne fait rien si elles ne sont pas définies."
+
+msgid "Directory permissions to set in all directories. It does nothing if it's not set."
+msgstr "Permissions de répertoire à attribuer à tous les répertoires. Cela ne fait rien si elles ne sont pas définies."
+
+msgid "Directory who is going to be changed permissions and owner recursivily"
+msgstr "Répertoire dont on va changer les permissions et le propriétaire récursivement"
+
+msgid "Change owner by uid or gid is not allowed"
+msgstr "Changer le propriétaire par uid ou gid n'est pas autorisé"
+
+msgid "Path parameter must be an absolute one"
+msgstr "Le paramètre de path doit être absolu"
+
+msgid "Seems you gave a bad octal string in --files or --directories parameters. Use format 644 or 755 for example."
+msgstr "Il semble que vous ayez donné une mauvaise chaîne octale dans les paramètres --files ou --directories. Utilisez le format 644 ou 755 par exemple."
+
+msgid "RecPermissions in {}:"
+msgstr "RecPermissions dans {}:"
+
+msgid "Directories found: "
+msgstr "Répertoires trouvés :"
+
+msgid "Files found: "
+msgstr "Fichiers trouvés :"
+
+msgid "Directories ownership changed: "
+msgstr "Propriété des répertoires changée :"
+
+msgid "Files ownership changed: "
+msgstr "Propriété des fichiers changée :"
+
+msgid "Directories permissions changed: "
+msgstr "Permissions des répertoires changées :"
+
+msgid "Files permissions changed: "
+msgstr "Permissions des fichiers changées :"
+
+msgid "Ignored symlinks: "
+msgstr "Liens symboliques ignorés :"
+
+msgid "{} error files:"
+msgstr "{} erreurs dans les fichiers :"
+
+msgid "Executed at {}, took {}."
+msgstr "Exécuté à {}, a pris {}."
+
+msgid "Removes empty directories"
+msgstr "Supprime les répertoires vides"
+
+msgid "Only changes permissions to the file or directory passed in absolute_path parameter."
+msgstr "Change seulement les permissions du fichier ou du répertoire passé dans le paramètre absolute_path."
+
+msgid "Directories deleted: "
+msgstr "Répertoires supprimés :"
+
+msgid "{} deleted dirs (pretend):"
+msgstr "{} répertoires supprimés (simulation) :"
+
+msgid "{} deleted dirs:"
+msgstr "{} répertoires supprimés :"
+
+msgid "{} errors:"
+msgstr "{} erreurs :"
+
+msgid "Developed by Mariano Muñoz 2018-{}"
+msgstr "Développé par Mariano Muñoz 2018-{}"
+
+msgid "New Release:"
+msgstr "Nouvelle sortie :"
+
+msgid "  * Change version and date in version.py"
+msgstr " * Changer la version et la date dans version.py"
+
+msgid "  * Edit Changelog in README"
+msgstr " * Editer le Changelog dans le README"
+
+msgid "If changed restart from first python setup.py doc"
+msgstr "S'il y a eu modification, recommencer depuis le premier document python setup.py"
+
+msgid "  * Make a new tag in github"
+msgstr " * Faire un nouveau tag dans GitHub"
+
+msgid "  * Create a new gentoo ebuild with the new version and install it"
+msgstr " * Créer un nouveau ebuild gentoo avec la nouvelle version et l'installer"
+
+msgid "  * Upload to portage repository"
+msgstr " * Uploader au dépôt de portage"
+
