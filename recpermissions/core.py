@@ -153,12 +153,14 @@ def remove_empty_directories(pretend,absolute_path):
                 continue
 
             if is_dir_empty(p):
-                if pretend is False:
+                if pretend:
+                    deleted_dirs.append(p) # Add to list for reporting in pretend mode
+                else:
                     try:
-                            rmdir(p)
+                        rmdir(p)
+                        deleted_dirs.append(p) # Add to list only if successfully deleted
                     except:
                         error_directories.append(p)                
-                deleted_dirs.append(p)
 
 
     print( _("RecPermissions in {}:").format(Fore.GREEN + absolute_path + Fore.RESET))
