@@ -1,4 +1,5 @@
-from recpermissions import _, __version__
+from recpermissions import __version__
+from recpermissions.i18n import _ # Import the translation function
 from os import system
 
 
@@ -32,4 +33,3 @@ def translate():
     system("msgmerge -N --no-wrap -U recpermissions/locale/fr.po recpermissions/locale/recpermissions.pot")
     system("msgfmt -cv -o recpermissions/locale/es/LC_MESSAGES/recpermissions.mo recpermissions/locale/es.po")
     system("msgfmt -cv -o recpermissions/locale/fr/LC_MESSAGES/recpermissions.mo recpermissions/locale/fr.po")
-

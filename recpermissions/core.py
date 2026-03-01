@@ -4,8 +4,9 @@ from sys import exit, version_info
 from argparse import ArgumentParser, RawTextHelpFormatter
 from locale import LC_ALL, getlocale, setlocale
 from os import chmod, path, rmdir, walk
-from colorama import Fore, Style, init as colorama_init
-from recpermissions import __versiondate__, __version__, _, epilog
+from colorama import Fore, Style, init as colorama_init # type: ignore
+from recpermissions import __versiondate__, __version__, epilog
+from recpermissions.i18n import _ # Import the translation function
 from recpermissions.commons import is_dir_empty, is_uid_or_gid, is_octal_string_permissions_valid, path_object, process
 from recpermissions.types import Returns
 

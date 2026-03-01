@@ -1,19 +1,11 @@
-from gettext import translation
-from importlib.resources import files
 from grp import getgrgid
 from os import chmod, path, stat, scandir
 from pwd import getpwuid
 from shutil import chown
-from recpermissions import __versiondate__, __version__, _
+from recpermissions import __versiondate__, __version__
+from recpermissions.i18n import _ # Import the translation function
+from recpermissions.types import Returns
 from stat import ST_MODE
-
-try:
-    t=translation('recpermissions', files("recpermissions") / 'locale')
-    def _(s):
-        return t.gettext(s)
-except:
-    def _(s):
-        return s
 
 
 
