@@ -1,15 +1,13 @@
 # Spanish translations for PACKAGE package
 # Traducciones al español para el paquete PACKAGE.
-# Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2018-2026 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# root <turulomio@yahoo.es>, 2018.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: RecPermissions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-28 08:44+0200\n"
-"PO-Revision-Date: 2025-09-28 08:05+0200\n"
+"POT-Creation-Date: 2026-03-01 08:13+0100\n"
+"PO-Revision-Date: 2026-03-01 08:08+0000\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -17,6 +15,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Developed by Mariano Muñoz 2018-{}"
+msgstr "Desarrollado por Mariano Muñoz 2018-{}"
 
 msgid "Octal string is None"
 msgstr "La cadena octal es nula"
@@ -117,20 +118,17 @@ msgstr "{} directorios borrados:"
 msgid "{} errors:"
 msgstr "{} errores:"
 
-msgid "Developed by Mariano Muñoz 2018-{}"
-msgstr "Desarrollado por Mariano Muñoz 2018-{}"
-
 msgid "New Release:"
 msgstr "Nueva versión:"
 
 msgid "  * Create a Github issue with the new version tag"
-msgstr ""
+msgstr "  * Crea una incidencia en Github con la nueva etiqueta de versión"
 
-msgid "  * Change version and datetime in __init__.py and in pyproject.toml"
-msgstr ""
+msgid "  * Change version and datetime in version.py and in pyproject.toml"
+msgstr "  * Cambia la versión y la fecha/hora en version.py y en pyproject.toml"
 
 msgid "  * Make a pull request to main branch"
-msgstr ""
+msgstr "  * Crea una solicitud de extracción a la rama principal"
 
 msgid "  * Make a new tag in github"
 msgstr "  * Hacer un nuevo tag en GitHub"
@@ -140,12 +138,3 @@ msgstr "  * Crea un nuevo ebuild de gentoo con la nueva versión e instálalo"
 
 msgid "  * Upload to portage repository"
 msgstr "  * Subelo al repositorio del portage"
-
-#~ msgid "  * Change version and date in version.py"
-#~ msgstr "  * Cambiar la versión y la fecha en version.py"
-
-#~ msgid "  * Edit Changelog in README"
-#~ msgstr "  * Modificar el Changelog en README"
-
-#~ msgid "If changed restart from first python setup.py doc"
-#~ msgstr "Si se cambia, reiniciar desde el primer 'python setup.py doc'"

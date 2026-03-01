@@ -1,4 +1,5 @@
-from recpermissions import _, __version__
+from recpermissions import __version__
+from recpermissions.i18n import _ # Import the translation function
 from os import system
 
 
@@ -11,7 +12,7 @@ def coverage():
 def release():
     print(_("New Release:"))
     print(_("  * Create a Github issue with the new version tag"))
-    print(_("  * Change version and datetime in __init__.py and in pyproject.toml"))
+    print(_("  * Change version and datetime in version.py and in pyproject.toml"))
     print("  * poe translate")
     print("  * Use IA to translate with vscode")
     print("  * poe translate")
@@ -32,4 +33,3 @@ def translate():
     system("msgmerge -N --no-wrap -U recpermissions/locale/fr.po recpermissions/locale/recpermissions.pot")
     system("msgfmt -cv -o recpermissions/locale/es/LC_MESSAGES/recpermissions.mo recpermissions/locale/es.po")
     system("msgfmt -cv -o recpermissions/locale/fr/LC_MESSAGES/recpermissions.mo recpermissions/locale/fr.po")
-

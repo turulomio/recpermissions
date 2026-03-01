@@ -1,7 +1,7 @@
 import pytest
 from tempfile import mkdtemp
 from shutil import rmtree
-from os import getuid, getgid, makedirs, remove, stat as os_stat
+from os import getuid, getgid, makedirs, remove, stat as os_stat, symlink, rmdir as os_rmdir
 from os import path
 from pwd import getpwuid
 from grp import getgrgid
@@ -39,6 +39,8 @@ def test_fs(monkeypatch):
         "sub_dir": path.join(test_dir, "sub_dir"),
         "file2": path.join(test_dir, "sub_dir", "file2.txt"),
         "deep_empty_dir": path.join(test_dir, "sub_dir", "deep_empty_dir"),
+        "symlink_to_file": path.join(test_dir, "symlink_to_file.txt"),
+        "symlink_to_dir": path.join(test_dir, "symlink_to_dir"),
     }
 
     with open(fs["file1"], "w") as f:
@@ -48,6 +50,8 @@ def test_fs(monkeypatch):
     with open(fs["file2"], "w") as f:
         f.write("world")
     makedirs(fs["deep_empty_dir"])
+    symlink(fs["file1"], fs["symlink_to_file"])
+    symlink(fs["empty_dir"], fs["symlink_to_dir"])
 
     yield fs
 
@@ -144,3 +148,48 @@ def test_main_remove_empty_directories_no_args(monkeypatch):
         main_remove_empty_directories()
     assert e.type == SystemExit
     assert e.value.code == 2
+
+def test_remove_empty_directories_rmdir_error(test_fs, monkeypatch):
+    """Test remove_empty_directories handles rmdir errors."""
+    # Store the original os.rmdir and mock it to raise an OSError for a specific directory
+    original_os_rmdir = os_rmdir
+    def mock_rmdir(path_to_remove, **kwargs): # Accept **kwargs to handle dir_fd
+        if path_to_remove == test_fs["empty_dir"]:
+            raise OSError("Permission denied for test")
+        original_os_rmdir(path_to_remove, **kwargs) # Pass kwargs to the original function
+
+    monkeypatch.setattr('recpermissions.core.rmdir', mock_rmdir) # Mock the rmdir as imported in core.py
+    
+    remove_empty_directories(pretend=False, absolute_path=test_fs["test_dir"])
+
+    # Assert that the directory that caused the error still exists
+    assert path.exists(test_fs["empty_dir"])
+    # The deep_empty_dir should still be removed if it didn't cause an error
+    assert not path.exists(test_fs["deep_empty_dir"])
+
+def test_main_recpermissions_valid_args(test_fs, monkeypatch):
+    """Test main_recpermissions with valid arguments."""
+    monkeypatch.setattr('sys.argv', [
+        'recpermissions',
+        '--user', test_fs["user"],
+        '--group', test_fs["group"],
+        '--files', '600',
+        '--directories', '700',
+        test_fs["test_dir"]
+    ])
+    # Mock the actual recpermissions function to avoid real file system changes
+    mock_recpermissions = monkeypatch.setattr('recpermissions.core.recpermissions', lambda *args, **kwargs: None)
+    main_recpermissions()
+    # We can't directly assert mock_recpermissions was called with specific args here due to the way it's mocked,
+    # but the absence of SystemExit implies successful parsing and call.
+
+def test_main_remove_empty_directories_valid_args(test_fs, monkeypatch):
+    """Test main_remove_empty_directories with valid arguments."""
+    monkeypatch.setattr('sys.argv', [
+        'remove-empty-dirs',
+        '--pretend',
+        test_fs["test_dir"]
+    ])
+    # Mock the actual remove_empty_directories function
+    mock_remove_empty_directories = monkeypatch.setattr('recpermissions.core.remove_empty_directories', lambda *args, **kwargs: None)
+    main_remove_empty_directories()

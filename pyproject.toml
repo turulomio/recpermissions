@@ -9,7 +9,7 @@ license = {text = "GPL-3"}
 readme = "README.md"
 requires-python = ">=3.13,<4"
 dependencies = [
-    "colorama (>=0.4.6,<0.5.0)",
+    "colorama >=0.4.6",
 ]
 
 [tool.poetry]
@@ -20,10 +20,10 @@ remove_empty_directories='recpermissions.core:main_remove_empty_directories'
 
 
 [tool.poetry.group.dev.dependencies]
-poethepoet = "^0.37.0"
-poetry = "^2.2.1"
-pytest = "^8.4.2"
-coverage = "^7.10.7"
+poethepoet = ">=0.42.1"
+poetry = ">=2.3.2"
+pytest = ">=9.0.2"
+coverage = ">=7.13.4"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
