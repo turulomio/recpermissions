@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecPermissions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-28 08:44+0200\n"
+"POT-Creation-Date: 2026-03-01 08:09+0100\n"
 "PO-Revision-Date: 2018-11-03 07:11+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: French\n"
@@ -16,6 +16,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Developed by Mariano Muñoz 2018-{}"
+msgstr "Développé par Mariano Muñoz 2018-{}"
 
 msgid "Octal string is None"
 msgstr "La chaîne octale est nulle"
@@ -116,16 +119,13 @@ msgstr "{} répertoires supprimés :"
 msgid "{} errors:"
 msgstr "{} erreurs :"
 
-msgid "Developed by Mariano Muñoz 2018-{}"
-msgstr "Développé par Mariano Muñoz 2018-{}"
-
 msgid "New Release:"
 msgstr "Nouvelle sortie :"
 
 msgid "  * Create a Github issue with the new version tag"
 msgstr ""
 
-msgid "  * Change version and datetime in __init__.py and in pyproject.toml"
+msgid "  * Change version and datetime in version.py and in pyproject.toml"
 msgstr ""
 
 msgid "  * Make a pull request to main branch"

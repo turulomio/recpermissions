@@ -12,7 +12,7 @@ def coverage():
 def release():
     print(_("New Release:"))
     print(_("  * Create a Github issue with the new version tag"))
-    print(_("  * Change version and datetime in __init__.py and in pyproject.toml"))
+    print(_("  * Change version and datetime in version.py and in pyproject.toml"))
     print("  * poe translate")
     print("  * Use IA to translate with vscode")
     print("  * poe translate")
