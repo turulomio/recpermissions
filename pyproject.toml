@@ -22,7 +22,7 @@ remove_empty_directories='recpermissions.core:main_remove_empty_directories'
 [tool.poetry.group.dev.dependencies]
 poethepoet = ">=0.42.1"
 poetry = ">=2.3.2"
-pytest = ">=9.0.2"
+pytest = ">=9.0.3"
 coverage = ">=7.13.4"
 
 [build-system]
