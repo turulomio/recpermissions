@@ -20,10 +20,10 @@ remove_empty_directories='recpermissions.core:main_remove_empty_directories'
 
 
 [tool.poetry.group.dev.dependencies]
-poethepoet = ">=0.42.1"
-poetry = ">=2.3.4"
-pytest = ">=9.0.3"
-coverage = ">=7.13.4"
+poethepoet = ">=0.48.0"
+poetry = ">=2.5.1"
+pytest = ">=9.1.1"
+coverage = ">=7.16.1"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
